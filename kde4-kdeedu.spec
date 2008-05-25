@@ -3,15 +3,16 @@
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.0.70
+Version:	4.0.74
 Release:	0.1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	2f3f0c2f6284bcd95f50aedea2a78478
+# Source0-md5:	65ee8a59772700d37078585eb96c36f6
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 Requires:	kde4-kdelibs >= %{version}
@@ -694,7 +695,7 @@ rm -rf $RPM_BUILD_ROOT
 %files parley -f parley.lang
 %defattr(644,root,root,755)
 %{_datadir}/apps/parley
-%attr(755,root,root) %{_bindir}/parleypractice
+#%attr(755,root,root) %{_bindir}/parleypractice
 %{_iconsdir}/hicolor/*x*/apps/parley.png
 %{_iconsdir}/hicolor/scalable/apps/parley.svgz
 %{_iconsdir}/hicolor/scalable/apps/parley-parley.svgz
