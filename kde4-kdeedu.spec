@@ -410,13 +410,13 @@ parley.
 %setup -q -n %{orgname}-%{version}
 
 %build
-export QTDIR=%{_prefix}
-mkdir build
+install -d build
 cd build
 %cmake \
-		-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-		-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
-		../
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
+	../
+
 %{__make}
 
 %install
