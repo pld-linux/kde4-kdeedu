@@ -3,22 +3,16 @@
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.0.74
-Release:	0.1
+Version:	4.0.98
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	65ee8a59772700d37078585eb96c36f6
-BuildRequires:	autoconf
-BuildRequires:	automake
+# Source0-md5:	43de6b77aed869ea54441d7395668926
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	sed >= 4.0
-Requires:	kde4-kdelibs >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define         _noautoreq      libtool(.*)
 
 %description
 K Desktop Environment - edutainment.
@@ -457,7 +451,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libkdeedu
 %attr(755,root,root) %{_libdir}/libkiten.so
 %attr(755,root,root) %{_libdir}/libmarblewidget.so
+%attr(755,root,root) %{_libdir}/libanalitza.so
 %{_includedir}/marble
+%{_datadir}/apps/cmake/modules/*.cmake
 
 %files blinken -f blinken.lang
 %defattr(644,root,root,755)
@@ -472,7 +468,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kalzium
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
-#%attr(755,root,root) %{_libdir}/kde4/plasma_applet_didyouknow.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_applet_didyouknow.so
 #%attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
 %{_desktopdir}/kde4/kalzium.desktop
 %{_datadir}/config.kcfg/kalzium.kcfg
@@ -481,8 +477,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/kalzium.svgz
 #%{_datadir}/kde4/services/plasma_kalzium.desktop
 #%{_datadir}/apps/desktoptheme/default/widgets/testtube.svg
-#%{_datadir}/kde4/services/plasma_didyouknow.desktop
-#%{_datadir}/apps/desktoptheme/default/widgets/chalkboard.svg
+%{_datadir}/kde4/services/plasma_didyouknow.desktop
+%{_datadir}/apps/desktoptheme/default/widgets/chalkboard.svg
 %{_datadir}/kde4/services/plasma-dataengine-kalzium.desktop
 %{_datadir}/apps/kalzium
 
@@ -565,7 +561,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kiten.desktop
 %{_datadir}/config.kcfg/kiten.kcfg
 %{_datadir}/apps/kiten
-%{_desktopdir}/kde4/radselect.desktop
 %{_datadir}/apps/kitenradselect/radselectui.rc
 %{_iconsdir}/hicolor/*x*/apps/kiten.png
 %{_iconsdir}/hicolor/scalable/apps/kiten.svgz
@@ -672,11 +667,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kalgebra -f kalgebra.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libanalitza.so
+%attr(755,root,root) %ghost %{_libdir}/libanalitza.so.?
+%attr(755,root,root) %{_libdir}/libanalitza.so.*.*.*
 %attr(755,root,root) %{_bindir}/kalgebra
 %{_desktopdir}/kde4/kalgebra.desktop
-#%attr(755,root,root) %{_libdir}/kde4/plasma_applet_kalgebra.so
-#%{_datadir}/kde4/services/kalgebraplasmoid.desktop
+%attr(755,root,root) %{_libdir}/kde4/plasma_applet_kalgebra.so
+%{_datadir}/kde4/services/kalgebraplasmoid.desktop
 %{_iconsdir}/hicolor/*x*/apps/kalgebra.png
 %attr(755,root,root) %{_bindir}/calgebra
 
@@ -690,6 +686,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/marble.desktop
 %{_datadir}/config.kcfg/marble.kcfg
 %{_datadir}/apps/marble
+%dir %{_libdir}/kde4/plugins/marble
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/CompassFloatItem.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleOverviewMap.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleStarsPlugin.so
 %attr(755,root,root) %{_bindir}/geodatatest
 %{_iconsdir}/hicolor/*x*/apps/marble.png
 %attr(755,root,root) %{_libdir}/libmarblewidget.so.4
@@ -709,8 +709,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/parley.kcfg
 %{_datadir}/config.kcfg/languagesettings.kcfg
 %{_datadir}/config.kcfg/documentsettings.kcfg
-#%attr(755,root,root) %{_libdir}/kde4/plasma_applet_parley.so
-#%{_datadir}/kde4/services/plasma_parley.desktop
-#%{_datadir}/apps/desktoptheme/default/widgets/parley_plasma_card.svg
-#%attr(755,root,root) %{_libdir}/kde4/plasma_engine_parley.so
-#%{_datadir}/kde4/services/plasma-dataengine-parley.desktop
+%attr(755,root,root) %{_libdir}/kde4/plasma_applet_parley.so
+%{_datadir}/kde4/services/plasma_parley.desktop
+%{_datadir}/apps/desktoptheme/default/widgets/parley_plasma_card.svg
+%attr(755,root,root) %{_libdir}/kde4/plasma_engine_parley.so
+%{_datadir}/kde4/services/plasma-dataengine-parley.desktop
