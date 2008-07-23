@@ -1,3 +1,20 @@
+#
+# TODO:
+# what about these files?:
+#   /usr/bin/tilecreator
+#   /usr/share/doc/kde/HTML/en/step/circular-motor.png
+#   /usr/share/doc/kde/HTML/en/step/common
+#   /usr/share/doc/kde/HTML/en/step/disk-properties.png
+#   /usr/share/doc/kde/HTML/en/step/examples.docbook
+#   /usr/share/doc/kde/HTML/en/step/index.cache.bz2
+#   /usr/share/doc/kde/HTML/en/step/index.docbook
+#   /usr/share/doc/kde/HTML/en/step/tutorial1.png
+#   /usr/share/doc/kde/HTML/en/step/tutorial2.png
+#   /usr/share/doc/kde/HTML/en/step/tutorial3.png
+#   /usr/share/doc/kde/HTML/en/step/tutorial4.png
+#   /usr/share/doc/kde/HTML/en/step/tutorial5.png
+#   /usr/share/doc/kde/HTML/en/step/tutorials.docbook
+
 %define		_state		unstable
 %define		orgname		kdeedu
 Summary:	K Desktop Environment - edutainment
