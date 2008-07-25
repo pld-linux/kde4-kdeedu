@@ -15,7 +15,7 @@
 #   /usr/share/doc/kde/HTML/en/step/tutorial5.png
 #   /usr/share/doc/kde/HTML/en/step/tutorials.docbook
 
-%define		_stat		stable
+%define		_state		stable
 %define		orgname		kdeedu
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
