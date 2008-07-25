@@ -15,17 +15,17 @@
 #   /usr/share/doc/kde/HTML/en/step/tutorial5.png
 #   /usr/share/doc/kde/HTML/en/step/tutorials.docbook
 
-%define		_state		unstable
+%define		_stat		stable
 %define		orgname		kdeedu
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.0.98
+Version:	4.1.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	43de6b77aed869ea54441d7395668926
+# Source0-md5:	0debdf843969152cb14b7186919b8c2b
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
@@ -484,8 +484,8 @@ rm -rf $RPM_BUILD_ROOT
 %files kalzium -f kalzium.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kalzium
-%attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_applet_didyouknow.so
+#%attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
+#%attr(755,root,root) %{_libdir}/kde4/plasma_applet_didyouknow.so
 #%attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
 %{_desktopdir}/kde4/kalzium.desktop
 %{_datadir}/config.kcfg/kalzium.kcfg
@@ -494,9 +494,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/kalzium.svgz
 #%{_datadir}/kde4/services/plasma_kalzium.desktop
 #%{_datadir}/apps/desktoptheme/default/widgets/testtube.svg
-%{_datadir}/kde4/services/plasma_didyouknow.desktop
-%{_datadir}/apps/desktoptheme/default/widgets/chalkboard.svg
-%{_datadir}/kde4/services/plasma-dataengine-kalzium.desktop
+#%{_datadir}/kde4/services/plasma_didyouknow.desktop
+#%{_datadir}/apps/desktoptheme/default/widgets/chalkboard.svg
+#%{_datadir}/kde4/services/plasma-dataengine-kalzium.desktop
 %{_datadir}/apps/kalzium
 
 %files kanagram -f kanagram.lang
@@ -621,6 +621,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libhtmesh.a
 %attr(755,root,root) %{_libdir}/libsbigudrv.so
 %attr(755,root,root) %{_bindir}/indiserver
+%attr(755,root,root) %{_bindir}/indi_apogee_alta
+%attr(755,root,root) %{_bindir}/indi_fli_ccd
 %attr(755,root,root) %{_bindir}/indi_lx200basic
 %attr(755,root,root) %{_bindir}/indi_lx200generic
 %attr(755,root,root) %{_bindir}/indi_celestron_gps
@@ -631,6 +633,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/indi_robofocus
 %attr(755,root,root) %{_bindir}/indi_trutech_wheel
 %attr(755,root,root) %{_bindir}/indi_fli_wheel
+%attr(755,root,root) %{_bindir}/indi_meade_lpi
+%attr(755,root,root) %{_bindir}/indi_sbig_ccd
+%attr(755,root,root) %{_bindir}/indi_v4l_generic
+%attr(755,root,root) %{_bindir}/indi_v4l_philips
 %attr(755,root,root) %{_bindir}/kstars
 %{_desktopdir}/kde4/kstars.desktop
 %{_datadir}/config.kcfg/kstars.kcfg
@@ -706,8 +712,10 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/kde4/plugins/marble
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/CompassFloatItem.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleOverviewMap.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MapScaleFloatItem.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleStarsPlugin.so
 %attr(755,root,root) %{_bindir}/geodatatest
+%attr(755,root,root) %{_bindir}/tilecreator
 %{_iconsdir}/hicolor/*x*/apps/marble.png
 %attr(755,root,root) %{_libdir}/libmarblewidget.so.4
 %attr(755,root,root) %{_libdir}/libmarblewidget.so.4.1.0
