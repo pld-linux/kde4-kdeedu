@@ -21,14 +21,21 @@ Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
 Version:	4.1.0
-Release:	1
+Release:	1.1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	0debdf843969152cb14b7186919b8c2b
 BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	boost-python-devel
+# TODO: missing packages in cvs repo
+# BuildRequires:        libfacile-devel - http://www.recherche.enac.fr/log/facile/
+# BuildRequires:        libnova-devel - http://libnova.sourceforge.net
+# BuildRequires:        libsbigudrv-devel - http://indi.sourceforge.net/
+# BuildRequires:        gmm++-devel - http://home.gna.org/getfem/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
