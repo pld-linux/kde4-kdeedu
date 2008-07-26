@@ -31,9 +31,9 @@ BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	boost-python-devel
+BuildRequires:	ocaml-facile
+BuildRequires:	libnova-devel
 # TODO: missing packages in cvs repo
-# BuildRequires:        libfacile-devel - http://www.recherche.enac.fr/log/facile/
-# BuildRequires:        libnova-devel - http://libnova.sourceforge.net
 # BuildRequires:        libsbigudrv-devel - http://indi.sourceforge.net/
 # BuildRequires:        gmm++-devel - http://home.gna.org/getfem/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
