@@ -1,7 +1,6 @@
 #
 # TODO:
 # what about these files?:
-#   /usr/bin/tilecreator
 #   /usr/share/doc/kde/HTML/en/step/circular-motor.png
 #   /usr/share/doc/kde/HTML/en/step/common
 #   /usr/share/doc/kde/HTML/en/step/disk-properties.png
@@ -26,15 +25,15 @@ License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	0debdf843969152cb14b7186919b8c2b
-BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	boost-python-devel
+BuildRequires:	indilib-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
+BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	libnova-devel
+BuildRequires:	ocaml-facile
 BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	boost-python-devel
-BuildRequires:	ocaml-facile
-BuildRequires:	libnova-devel
 # TODO: missing packages in cvs repo
-# BuildRequires:        libsbigudrv-devel - http://indi.sourceforge.net/
 # BuildRequires:        gmm++-devel - http://home.gna.org/getfem/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
