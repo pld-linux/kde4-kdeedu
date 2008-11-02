@@ -14,18 +14,19 @@
 #   /usr/share/doc/kde/HTML/en/step/tutorial5.png
 #   /usr/share/doc/kde/HTML/en/step/tutorials.docbook
 
-%define		_state		stable
+%define		_state		unstable
 %define		orgname		kdeedu
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.1.0
-Release:	1.1
+Version:	4.1.71
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	0debdf843969152cb14b7186919b8c2b
+# Source0-md5:	a7f8520ef2ff16d90c6dc4fa3be7eac9
 BuildRequires:	boost-python-devel
+BuildRequires:	eigen
 BuildRequires:	indilib-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
