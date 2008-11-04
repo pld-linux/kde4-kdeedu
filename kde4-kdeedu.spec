@@ -20,11 +20,12 @@ Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
 Version:	4.1.71
-Release:	1
+Release:	0.1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	a7f8520ef2ff16d90c6dc4fa3be7eac9
+Patch0:		kde4-kdeedu-kalgebra.patch
 BuildRequires:	boost-python-devel
 BuildRequires:	eigen
 BuildRequires:	indilib-devel
@@ -426,6 +427,7 @@ parley.
 
 %prep
 %setup -q -n %{orgname}-%{version}
+%patch0 -p1
 
 %build
 install -d build
