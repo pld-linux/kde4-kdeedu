@@ -13,6 +13,7 @@
 #   /usr/share/doc/kde/HTML/en/step/tutorial4.png
 #   /usr/share/doc/kde/HTML/en/step/tutorial5.png
 #   /usr/share/doc/kde/HTML/en/step/tutorials.docbook
+# - Package unpackaged files
 
 %define		_state		unstable
 %define		orgname		kdeedu
@@ -20,12 +21,12 @@ Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
 Version:	4.1.71
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	a7f8520ef2ff16d90c6dc4fa3be7eac9
-Patch0:		kde4-kdeedu-kalgebra.patch
+Patch0:		%{name}-kalgebra.patch
 BuildRequires:	boost-python-devel
 BuildRequires:	eigen
 BuildRequires:	indilib-devel
@@ -94,27 +95,27 @@ Guess anagram game.
 %description kanagram -l pl.UTF-8
 Gra w zgadywanie anagramów.
 
-%package kbruch
-Summary:	Task generator for calculations with fractions
-Summary(pl.UTF-8):	Generator zadań z obliczeniami na ułamkach
-Group:		X11/Applications
+#%package kbruch
+#Summary:	Task generator for calculations with fractions
+#Summary(pl.UTF-8):	Generator zadań z obliczeniami na ułamkach
+#Group:		X11/Applications
 
-%description kbruch
-KBruch is a small program to generate tasks with fractions. The user
-has to solve the given task by entering the right value for numerator
-and denominator. The program checks the input and gives feedback. The
-task generation can be adjusted by using different parameters. The
-user can decide if he wants to solve tasks with addition/subtraction
-and/or multiplication/division.
+#%description kbruch
+#KBruch is a small program to generate tasks with fractions. The user
+#has to solve the given task by entering the right value for numerator
+#and denominator. The program checks the input and gives feedback. The
+#task generation can be adjusted by using different parameters. The
+#user can decide if he wants to solve tasks with addition/subtraction
+#and/or multiplication/division.
 
-%description kbruch -l pl.UTF-8
-Generator zadań z obliczeniami na ułamkach. KBruch to mały program do
-generowania zadań z ułamkami. Użytkownik ma rozwiązać zadanie poprzez
-wpisanie poprawnej wartości dla licznika i mianownika. Następnie
-program sprawdza poprawność danych. Generowanie zadań można
-dostosowywać przy pomocy różnych parametrów. Użytkownik może
-decydować, czy chce rozwiązywać zadania z dodawaniem/odejmowaniem
-i/lub mnożeniem/dzieleniem.
+#%description kbruch -l pl.UTF-8
+#Generator zadań z obliczeniami na ułamkach. KBruch to mały program do
+#generowania zadań z ułamkami. Użytkownik ma rozwiązać zadanie poprzez
+#wpisanie poprawnej wartości dla licznika i mianownika. Następnie
+#program sprawdza poprawność danych. Generowanie zadań można
+#dostosowywać przy pomocy różnych parametrów. Użytkownik może
+#decydować, czy chce rozwiązywać zadania z dodawaniem/odejmowaniem
+#i/lub mnożeniem/dzieleniem.
 
 %package kgeography
 Summary:	A geography learning program
@@ -532,14 +533,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*x*/apps/kanagram.png
 %{_iconsdir}/hicolor/scalable/apps/kanagram.svgz
 
-%files kbruch -f kbruch.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kbruch
-%{_desktopdir}/kde4/kbruch.desktop
-%{_datadir}/config.kcfg/kbruch.kcfg
-%{_datadir}/apps/kbruch
-%{_iconsdir}/hicolor/*x*/apps/kbruch.png
-%{_iconsdir}/hicolor/scalable/apps/kbruch.svgz
+#%files kbruch -f kbruch.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/kbruch
+#%{_desktopdir}/kde4/kbruch.desktop
+#%{_datadir}/config.kcfg/kbruch.kcfg
+#%{_datadir}/apps/kbruch
+#%{_iconsdir}/hicolor/*x*/apps/kbruch.png
+#%{_iconsdir}/hicolor/scalable/apps/kbruch.svgz
 
 %files kgeography -f kgeography.lang
 %defattr(644,root,root,755)
@@ -583,7 +584,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kitengen
 %attr(755,root,root) %{_bindir}/kitenradselect
 %attr(755,root,root) %{_libdir}/libkiten.so.4
-%attr(755,root,root) %{_libdir}/libkiten.so.4.1.0
+%attr(755,root,root) %{_libdir}/libkiten.so.4.2.0
 %{_desktopdir}/kde4/kiten.desktop
 %{_datadir}/config.kcfg/kiten.kcfg
 %{_datadir}/apps/kiten
@@ -628,24 +629,24 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libSatLib.so
 %attr(755,root,root) %{_libdir}/libhtmesh.a
-%attr(755,root,root) %{_libdir}/libsbigudrv.so
+#%attr(755,root,root) %{_libdir}/libsbigudrv.so
 %attr(755,root,root) %{_bindir}/indiserver
-%attr(755,root,root) %{_bindir}/indi_apogee_alta
-%attr(755,root,root) %{_bindir}/indi_fli_ccd
-%attr(755,root,root) %{_bindir}/indi_lx200basic
-%attr(755,root,root) %{_bindir}/indi_lx200generic
-%attr(755,root,root) %{_bindir}/indi_celestron_gps
-%attr(755,root,root) %{_bindir}/indi_orion_atlas
-%attr(755,root,root) %{_bindir}/indi_skycommander
-%attr(755,root,root) %{_bindir}/indi_intelliscope
-%attr(755,root,root) %{_bindir}/indi_fli_pdf
-%attr(755,root,root) %{_bindir}/indi_robofocus
-%attr(755,root,root) %{_bindir}/indi_trutech_wheel
-%attr(755,root,root) %{_bindir}/indi_fli_wheel
-%attr(755,root,root) %{_bindir}/indi_meade_lpi
-%attr(755,root,root) %{_bindir}/indi_sbig_ccd
-%attr(755,root,root) %{_bindir}/indi_v4l_generic
-%attr(755,root,root) %{_bindir}/indi_v4l_philips
+#%attr(755,root,root) %{_bindir}/indi_apogee_alta
+#%attr(755,root,root) %{_bindir}/indi_fli_ccd
+#%attr(755,root,root) %{_bindir}/indi_lx200basic
+#%attr(755,root,root) %{_bindir}/indi_lx200generic
+#%attr(755,root,root) %{_bindir}/indi_celestron_gps
+#%attr(755,root,root) %{_bindir}/indi_orion_atlas
+#%attr(755,root,root) %{_bindir}/indi_skycommander
+#%attr(755,root,root) %{_bindir}/indi_intelliscope
+#%attr(755,root,root) %{_bindir}/indi_fli_pdf
+#%attr(755,root,root) %{_bindir}/indi_robofocus
+#%attr(755,root,root) %{_bindir}/indi_trutech_wheel
+#%attr(755,root,root) %{_bindir}/indi_fli_wheel
+#%attr(755,root,root) %{_bindir}/indi_meade_lpi
+#%attr(755,root,root) %{_bindir}/indi_sbig_ccd
+#%attr(755,root,root) %{_bindir}/indi_v4l_generic
+#%attr(755,root,root) %{_bindir}/indi_v4l_philips
 %attr(755,root,root) %{_bindir}/kstars
 %{_desktopdir}/kde4/kstars.desktop
 %{_datadir}/config.kcfg/kstars.kcfg
@@ -687,15 +688,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/libkdeedu
 %attr(755,root,root) %{_libdir}/libkdeeduui.so
 %attr(755,root,root) %{_libdir}/libSatLib.so.4
-%attr(755,root,root) %{_libdir}/libSatLib.so.4.1.0
+%attr(755,root,root) %{_libdir}/libSatLib.so.4.2.0
 %attr(755,root,root) %{_libdir}/libkdeeduui.so.4
-%attr(755,root,root) %{_libdir}/libkdeeduui.so.4.1.0
+%attr(755,root,root) %{_libdir}/libkdeeduui.so.4.2.0
 %attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4
-%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4.1.0
-%attr(755,root,root) %{_libdir}/libsbigudrv.so.1
-%attr(755,root,root) %{_libdir}/libsbigudrv.so.1.0.0
+%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4.2.0
+#%attr(755,root,root) %{_libdir}/libsbigudrv.so.1
+#%attr(755,root,root) %{_libdir}/libsbigudrv.so.1.0.0
 %attr(755,root,root) %{_libdir}/libscience.so.4
-%attr(755,root,root) %{_libdir}/libscience.so.4.1.0
+%attr(755,root,root) %{_libdir}/libscience.so.4.2.0
 
 %files kalgebra -f kalgebra.lang
 %defattr(644,root,root,755)
@@ -727,7 +728,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/tilecreator
 %{_iconsdir}/hicolor/*x*/apps/marble.png
 %attr(755,root,root) %{_libdir}/libmarblewidget.so.4
-%attr(755,root,root) %{_libdir}/libmarblewidget.so.4.1.0
+%attr(755,root,root) %{_libdir}/libmarblewidget.so.4.2.0
 
 %files parley -f parley.lang
 %defattr(644,root,root,755)
