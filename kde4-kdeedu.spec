@@ -20,20 +20,24 @@
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.1.71
-Release:	0.2
+Version:	4.1.73
+Release:	0.1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	a7f8520ef2ff16d90c6dc4fa3be7eac9
+# Source0-md5:	75328bb3b479e405e8ef7727ba219a5a
 Patch0:		%{name}-kalgebra.patch
 BuildRequires:	boost-python-devel
 BuildRequires:	eigen
+BuildRequires:	gpsd-devel
 BuildRequires:	indilib-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libnova-devel
+BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
+BuildRequires:	ocaml-facile
+BuildRequires:	openbabel-devel >= 2.2.0
 BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
 # TODO: missing packages in cvs repo
@@ -428,7 +432,7 @@ parley.
 
 %prep
 %setup -q -n %{orgname}-%{version}
-%patch0 -p1
+#%patch0 -p1
 
 %build
 install -d build
