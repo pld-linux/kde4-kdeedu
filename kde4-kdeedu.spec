@@ -43,7 +43,7 @@ BuildRequires:	libnova-devel
 BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
 BuildRequires:	openbabel-devel >= 2.2.0
-BuildRequires:	python-PyKDE4
+#BuildRequires:	python-PyKDE4
 BuildRequires:	python-sip-devel
 BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
