@@ -5,19 +5,6 @@
 #   /usr/lib64/libcompoundviewer.so
 #   /usr/lib64/libcompoundviewer.so.4
 #   /usr/lib64/libcompoundviewer.so.4.2.0
-#   /usr/share/doc/kde/HTML/en/step/circular-motor.png
-#   /usr/share/doc/kde/HTML/en/step/common
-#   /usr/share/doc/kde/HTML/en/step/disk-properties.png
-#   /usr/share/doc/kde/HTML/en/step/examples.docbook
-#   /usr/share/doc/kde/HTML/en/step/index.cache.bz2
-#   /usr/share/doc/kde/HTML/en/step/index.docbook
-#   /usr/share/doc/kde/HTML/en/step/mainwindow.png
-#   /usr/share/doc/kde/HTML/en/step/tutorial1.png
-#   /usr/share/doc/kde/HTML/en/step/tutorial2.png
-#   /usr/share/doc/kde/HTML/en/step/tutorial3.png
-#   /usr/share/doc/kde/HTML/en/step/tutorial4.png
-#   /usr/share/doc/kde/HTML/en/step/tutorial5.png
-#   /usr/share/doc/kde/HTML/en/step/tutorials.docbook
 #   /usr/share/kde4/services/plasma-applet-kworldclock.desktop
 %define		_state		unstable
 %define		orgname		kdeedu
@@ -435,6 +422,23 @@ parley.
 %description parley -l pl.UTF-8
 parley.
 
+%package step
+Summary:	Step: Interactive Physical Simulator
+Group:		X11/Applications
+URL:		http://edu.kde.org/step/
+
+%description step
+Step is an interactive physical simulator.
+
+It works like this: you place some bodies on the scene, add some
+forces such as gravity or springs, then click "Simulate" and Step
+shows you how your scene will evolve according to the laws of physics.
+
+You can change every property of bodies/forces in your experiment
+(even during simulation) and see how this will change evolution of the
+experiment. With Step you can not only learn but feel how physics
+works!
+
 %prep
 %setup -q -n %{orgname}-%{version}
 #%patch0 -p1
@@ -477,6 +481,7 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang kwordquiz	--with-kde
 %find_lang marble	--with-kde
 %find_lang parley	--with-kde
+%find_lang step		--with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -789,3 +794,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/desktoptheme/default/widgets/parley_plasma_card.svg
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_parley.so
 %{_datadir}/kde4/services/plasma-dataengine-parley.desktop
+
+%files step -f step.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/step
+%{_datadir}/apps/step
+%{_datadir}/config.kcfg/step.kcfg
+%{_datadir}/config/step.knsrc
+%{_desktopdir}/kde4/step.desktop
+%{_iconsdir}/hicolor/*/apps/step.png
+%{_iconsdir}/oxygen/*/actions/pointer.png
+%{_iconsdir}/oxygen/*/actions/step_*.png
