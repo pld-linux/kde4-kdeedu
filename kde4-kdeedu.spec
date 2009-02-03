@@ -17,7 +17,6 @@ License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	aaddbdab29e1d284ad8ee67a78b4c597
-Patch0:		%{name}-kalgebra.patch
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
 BuildRequires:	eigen
@@ -441,7 +440,6 @@ works!
 
 %prep
 %setup -q -n %{orgname}-%{version}
-#%patch0 -p1
 
 %build
 install -d build
