@@ -1,40 +1,38 @@
-#
 # TODO:
-# what about these files?:
-#   /usr/share/doc/kde/HTML/en/step/circular-motor.png
-#   /usr/share/doc/kde/HTML/en/step/common
-#   /usr/share/doc/kde/HTML/en/step/disk-properties.png
-#   /usr/share/doc/kde/HTML/en/step/examples.docbook
-#   /usr/share/doc/kde/HTML/en/step/index.cache.bz2
-#   /usr/share/doc/kde/HTML/en/step/index.docbook
-#   /usr/share/doc/kde/HTML/en/step/tutorial1.png
-#   /usr/share/doc/kde/HTML/en/step/tutorial2.png
-#   /usr/share/doc/kde/HTML/en/step/tutorial3.png
-#   /usr/share/doc/kde/HTML/en/step/tutorial4.png
-#   /usr/share/doc/kde/HTML/en/step/tutorial5.png
-#   /usr/share/doc/kde/HTML/en/step/tutorials.docbook
-
+# - dep not recognized: libindi-devel - http://indi.sf.net
+# - package:
+#   /usr/lib64/kde4/plasma_applet_worldclock.so
+#   /usr/lib64/libcompoundviewer.so
+#   /usr/lib64/libcompoundviewer.so.4
+#   /usr/lib64/libcompoundviewer.so.4.2.0
+#   /usr/share/kde4/services/plasma-applet-kworldclock.desktop
 %define		_state		stable
 %define		orgname		kdeedu
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.1.0
-Release:	1.1
+Version:	4.2.0
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	0debdf843969152cb14b7186919b8c2b
+# Source0-md5:	aaddbdab29e1d284ad8ee67a78b4c597
 BuildRequires:	boost-python-devel
+BuildRequires:	cfitsio-devel
+BuildRequires:	eigen
+BuildRequires:	gmm-devel
+BuildRequires:	gpsd-devel
 BuildRequires:	indilib-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libnova-devel
+BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
+BuildRequires:	openbabel-devel >= 2.2.0
+#BuildRequires:	python-PyKDE4
+BuildRequires:	python-sip-devel
 BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
-# TODO: missing packages in cvs repo
-# BuildRequires:        gmm++-devel - http://home.gna.org/getfem/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -423,6 +421,23 @@ parley.
 %description parley -l pl.UTF-8
 parley.
 
+%package step
+Summary:	Step: Interactive Physical Simulator
+Group:		X11/Applications
+URL:		http://edu.kde.org/step/
+
+%description step
+Step is an interactive physical simulator.
+
+It works like this: you place some bodies on the scene, add some
+forces such as gravity or springs, then click "Simulate" and Step
+shows you how your scene will evolve according to the laws of physics.
+
+You can change every property of bodies/forces in your experiment
+(even during simulation) and see how this will change evolution of the
+experiment. With Step you can not only learn but feel how physics
+works!
+
 %prep
 %setup -q -n %{orgname}-%{version}
 
@@ -457,24 +472,26 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang kiten	--with-kde
 %find_lang klettres	--with-kde
 %find_lang kmplot	--with-kde
-%find_lang kpercentage	--with-kde
+#%find_lang kpercentage	--with-kde
 %find_lang kstars	--with-kde
 %find_lang ktouch	--with-kde
 %find_lang kturtle	--with-kde
 %find_lang kwordquiz	--with-kde
 %find_lang marble	--with-kde
 %find_lang parley	--with-kde
+%find_lang step		--with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/libkiten
-%{_includedir}/libkdeedu
+%attr(755,root,root) %{_libdir}/libanalitza.so
+%attr(755,root,root) %{_libdir}/libavogadro-kalzium.so
 %attr(755,root,root) %{_libdir}/libkiten.so
 %attr(755,root,root) %{_libdir}/libmarblewidget.so
-%attr(755,root,root) %{_libdir}/libanalitza.so
+%{_includedir}/libkdeedu
+%{_includedir}/libkiten
 %{_includedir}/marble
 %{_datadir}/apps/cmake/modules/*.cmake
 
@@ -482,84 +499,102 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/blinken
 %{_datadir}/apps/blinken
-%{_desktopdir}/kde4/blinken.desktop
 %{_datadir}/config.kcfg/blinken.kcfg
-%{_iconsdir}/hicolor/*x*/apps/blinken.png
+%{_desktopdir}/kde4/blinken.desktop
 %{_iconsdir}/hicolor/scalable/apps/blinken.svgz
+%{_iconsdir}/hicolor/*x*/apps/blinken.png
 
 %files kalzium -f kalzium.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kalzium
-#%attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
-#%attr(755,root,root) %{_libdir}/kde4/plasma_applet_didyouknow.so
-#%attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
-%{_desktopdir}/kde4/kalzium.desktop
-%{_datadir}/config.kcfg/kalzium.kcfg
-%{_datadir}/config/kalzium.knsrc
-%{_iconsdir}/hicolor/*x*/apps/kalzium.png
-%{_iconsdir}/hicolor/scalable/apps/kalzium.svgz
-#%{_datadir}/kde4/services/plasma_kalzium.desktop
-#%{_datadir}/apps/desktoptheme/default/widgets/testtube.svg
-#%{_datadir}/kde4/services/plasma_didyouknow.desktop
-#%{_datadir}/apps/desktoptheme/default/widgets/chalkboard.svg
-#%{_datadir}/kde4/services/plasma-dataengine-kalzium.desktop
+%attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_applet_didyouknow.so
+
+%attr(755,root,root) %ghost %{_libdir}/libavogadro-kalzium.so.0
+%attr(755,root,root) %{_libdir}/libavogadro-kalzium.so.*.*.*
+
+%dir %{_libdir}/avogadro-kalzium/engines
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liblabelengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liborbitalengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libribbonengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libringengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libsphereengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libstickengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libwireengine.so
+
+%dir %{_libdir}/avogadro-kalzium/tools
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libclickmeasuretool.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libdrawtool.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libnavigatetool.so
+
+# XXX: ugly dir deps? -> devel?
+%attr(755,root,root) %{_libdir}/kde4/plugins/designer/kalziumuiwidgets.so
+
+%{_datadir}/apps/desktoptheme/default/widgets/chalkboard.svg
 %{_datadir}/apps/kalzium
+%{_datadir}/config/kalzium.knsrc
+%{_datadir}/config.kcfg/kalzium.kcfg
+%{_datadir}/kde4/services/plasma-dataengine-kalzium.desktop
+%{_datadir}/kde4/services/plasma_didyouknow.desktop
+%{_desktopdir}/kde4/kalzium.desktop
+%{_iconsdir}/hicolor/scalable/apps/kalzium.svgz
+%{_iconsdir}/hicolor/*x*/apps/kalzium.png
 
 %files kanagram -f kanagram.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kanagram
 %{_datadir}/apps/kanagram
-%{_desktopdir}/kde4/kanagram.desktop
-%{_datadir}/config.kcfg/kanagram.kcfg
-%{_datadir}/config/kanagram.knsrc
-%{_datadir}/apps/kvtml/en/currencies.kvtml
-%{_datadir}/apps/kvtml/en/numbers.kvtml
-%{_datadir}/apps/kvtml/en/inventions.kvtml
-%{_datadir}/apps/kvtml/en/computers.kvtml
-%{_datadir}/apps/kvtml/en/space.kvtml
-%{_datadir}/apps/kvtml/en/fruits.kvtml
-%{_datadir}/apps/kvtml/en/vegetables.kvtml
 %{_datadir}/apps/kvtml/en/clothing.kvtml
-%{_datadir}/apps/kvtml/en/sports.kvtml
-%{_datadir}/apps/kvtml/en/people.kvtml
-%{_datadir}/apps/kvtml/en/transportation.kvtml
-%{_datadir}/apps/kvtml/en/professions.kvtml
-%{_datadir}/apps/kvtml/en/worldcapitals.kvtml
+%{_datadir}/apps/kvtml/en/computers.kvtml
+%{_datadir}/apps/kvtml/en/currencies.kvtml
+%{_datadir}/apps/kvtml/en/fruits.kvtml
+%{_datadir}/apps/kvtml/en/inventions.kvtml
+%{_datadir}/apps/kvtml/en/numbers.kvtml
 %{_datadir}/apps/kvtml/en/objects.kvtml
-%{_iconsdir}/hicolor/*x*/apps/kanagram.png
+%{_datadir}/apps/kvtml/en/people.kvtml
+%{_datadir}/apps/kvtml/en/professions.kvtml
+%{_datadir}/apps/kvtml/en/space.kvtml
+%{_datadir}/apps/kvtml/en/sports.kvtml
+%{_datadir}/apps/kvtml/en/transportation.kvtml
+%{_datadir}/apps/kvtml/en/vegetables.kvtml
+%{_datadir}/apps/kvtml/en/worldcapitals.kvtml
+%{_datadir}/config/kanagram.knsrc
+%{_datadir}/config.kcfg/kanagram.kcfg
+%{_desktopdir}/kde4/kanagram.desktop
 %{_iconsdir}/hicolor/scalable/apps/kanagram.svgz
+%{_iconsdir}/hicolor/*x*/apps/kanagram.png
 
 %files kbruch -f kbruch.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kbruch
-%{_desktopdir}/kde4/kbruch.desktop
-%{_datadir}/config.kcfg/kbruch.kcfg
 %{_datadir}/apps/kbruch
-%{_iconsdir}/hicolor/*x*/apps/kbruch.png
+%{_datadir}/config.kcfg/kbruch.kcfg
+%{_desktopdir}/kde4/kbruch.desktop
 %{_iconsdir}/hicolor/scalable/apps/kbruch.svgz
+%{_iconsdir}/hicolor/*x*/apps/kbruch.png
 
 %files kgeography -f kgeography.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kgeography
-%{_desktopdir}/kde4/kgeography.desktop
-%{_datadir}/config.kcfg/kgeography.kcfg
 %{_datadir}/apps/kgeography
-%{_iconsdir}/hicolor/*x*/apps/kgeography.png
+%{_datadir}/config.kcfg/kgeography.kcfg
+%{_desktopdir}/kde4/kgeography.desktop
 %{_iconsdir}/hicolor/scalable/apps/kgeography.svgz
+%{_iconsdir}/hicolor/*x*/apps/kgeography.png
 
 %files khangman -f khangman.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/khangman
 %{_datadir}/apps/khangman
-%{_desktopdir}/kde4/khangman.desktop
-%{_datadir}/config.kcfg/khangman.kcfg
-%{_datadir}/config/khangman.knsrc
 %{_datadir}/apps/kvtml/en/animals.kvtml
 %{_datadir}/apps/kvtml/en/easy.kvtml
 %{_datadir}/apps/kvtml/en/hard.kvtml
 %{_datadir}/apps/kvtml/en/medium.kvtml
-%{_iconsdir}/hicolor/*x*/apps/khangman.png
+%{_datadir}/config.kcfg/khangman.kcfg
+%{_datadir}/config/khangman.knsrc
+%{_desktopdir}/kde4/khangman.desktop
 %{_iconsdir}/hicolor/scalable/apps/khangman.svgz
+%{_iconsdir}/hicolor/*x*/apps/khangman.png
 
 %files kig -f kig.lang
 %defattr(644,root,root,755)
@@ -574,75 +609,80 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*x*/mimetypes/application-x-kig.png
 %{_iconsdir}/hicolor/scalable/mimetypes/application-x-kig.svgz
 
+# XXX pulls kate dep via dir. subpackage?
+%{_datadir}/apps/katepart/syntax/python-kig.xml
+
 %files kiten -f kiten.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kiten
 %attr(755,root,root) %{_bindir}/kitengen
 %attr(755,root,root) %{_bindir}/kitenradselect
-%attr(755,root,root) %{_libdir}/libkiten.so.4
-%attr(755,root,root) %{_libdir}/libkiten.so.4.1.0
-%{_desktopdir}/kde4/kiten.desktop
-%{_datadir}/config.kcfg/kiten.kcfg
+%attr(755,root,root) %ghost %{_libdir}/libkiten.so.4
+%attr(755,root,root) %{_libdir}/libkiten.so.*.*.*
 %{_datadir}/apps/kiten
 %{_datadir}/apps/kitenradselect/radselectui.rc
-%{_iconsdir}/hicolor/*x*/apps/kiten.png
+%{_datadir}/config.kcfg/kiten.kcfg
+%{_desktopdir}/kde4/kiten.desktop
 %{_iconsdir}/hicolor/scalable/apps/kiten.svgz
+%{_iconsdir}/hicolor/*x*/apps/kiten.png
 
 %files klettres -f klettres.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/klettres
 %{_datadir}/apps/klettres
-%{_desktopdir}/kde4/klettres.desktop
 %{_datadir}/config.kcfg/klettres.kcfg
 %{_datadir}/config/klettres.knsrc
-%{_iconsdir}/hicolor/*x*/apps/klettres.png
+%{_desktopdir}/kde4/klettres.desktop
 %{_iconsdir}/hicolor/scalable/apps/klettres.svgz
+%{_iconsdir}/hicolor/*x*/apps/klettres.png
 
 %files kmplot -f kmplot.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/libkmplotpart.so
 %attr(755,root,root) %{_bindir}/kmplot
-%{_desktopdir}/kde4/kmplot.desktop
-%{_datadir}/config.kcfg/kmplot.kcfg
-%{_datadir}/kde4/services/kmplot_part.desktop
+%attr(755,root,root) %{_libdir}/kde4/libkmplotpart.so
 %{_datadir}/apps/kmplot
+%{_datadir}/config.kcfg/kmplot.kcfg
 %{_datadir}/dbus-1/interfaces/org.kde.kmplot.KmPlot.xml
 %{_datadir}/dbus-1/interfaces/org.kde.kmplot.MainDlg.xml
 %{_datadir}/dbus-1/interfaces/org.kde.kmplot.Parser.xml
 %{_datadir}/dbus-1/interfaces/org.kde.kmplot.View.xml
-%{_iconsdir}/hicolor/*x*/apps/kmplot.png
+%{_datadir}/kde4/services/kmplot_part.desktop
+%{_desktopdir}/kde4/kmplot.desktop
 %{_iconsdir}/hicolor/scalable/apps/kmplot.svgz
+%{_iconsdir}/hicolor/*x*/apps/kmplot.png
 
+%if 0
 %files kpercentage -f kpercentage.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kpercentage
-%{_desktopdir}/kde4/kpercentage.desktop
 %{_datadir}/apps/kpercentage
-%{_iconsdir}/hicolor/*x*/apps/kpercentage.png
+%{_desktopdir}/kde4/kpercentage.desktop
 %{_iconsdir}/hicolor/scalable/apps/kpercentage.svgz
+%{_iconsdir}/hicolor/*x*/apps/kpercentage.png
+%endif
 
 %files kstars -f kstars.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libSatLib.so
 %attr(755,root,root) %{_libdir}/libhtmesh.a
-%attr(755,root,root) %{_libdir}/libsbigudrv.so
-%attr(755,root,root) %{_bindir}/indiserver
-%attr(755,root,root) %{_bindir}/indi_apogee_alta
-%attr(755,root,root) %{_bindir}/indi_fli_ccd
-%attr(755,root,root) %{_bindir}/indi_lx200basic
-%attr(755,root,root) %{_bindir}/indi_lx200generic
-%attr(755,root,root) %{_bindir}/indi_celestron_gps
-%attr(755,root,root) %{_bindir}/indi_orion_atlas
-%attr(755,root,root) %{_bindir}/indi_skycommander
-%attr(755,root,root) %{_bindir}/indi_intelliscope
-%attr(755,root,root) %{_bindir}/indi_fli_pdf
-%attr(755,root,root) %{_bindir}/indi_robofocus
-%attr(755,root,root) %{_bindir}/indi_trutech_wheel
-%attr(755,root,root) %{_bindir}/indi_fli_wheel
-%attr(755,root,root) %{_bindir}/indi_meade_lpi
-%attr(755,root,root) %{_bindir}/indi_sbig_ccd
-%attr(755,root,root) %{_bindir}/indi_v4l_generic
-%attr(755,root,root) %{_bindir}/indi_v4l_philips
+#%attr(755,root,root) %{_libdir}/libsbigudrv.so
+#%attr(755,root,root) %{_bindir}/indiserver
+#%attr(755,root,root) %{_bindir}/indi_apogee_alta
+#%attr(755,root,root) %{_bindir}/indi_fli_ccd
+#%attr(755,root,root) %{_bindir}/indi_lx200basic
+#%attr(755,root,root) %{_bindir}/indi_lx200generic
+#%attr(755,root,root) %{_bindir}/indi_celestron_gps
+#%attr(755,root,root) %{_bindir}/indi_orion_atlas
+#%attr(755,root,root) %{_bindir}/indi_skycommander
+#%attr(755,root,root) %{_bindir}/indi_intelliscope
+#%attr(755,root,root) %{_bindir}/indi_fli_pdf
+#%attr(755,root,root) %{_bindir}/indi_robofocus
+#%attr(755,root,root) %{_bindir}/indi_trutech_wheel
+#%attr(755,root,root) %{_bindir}/indi_fli_wheel
+#%attr(755,root,root) %{_bindir}/indi_meade_lpi
+#%attr(755,root,root) %{_bindir}/indi_sbig_ccd
+#%attr(755,root,root) %{_bindir}/indi_v4l_generic
+#%attr(755,root,root) %{_bindir}/indi_v4l_philips
 %attr(755,root,root) %{_bindir}/kstars
 %{_desktopdir}/kde4/kstars.desktop
 %{_datadir}/config.kcfg/kstars.kcfg
@@ -684,15 +724,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/libkdeedu
 %attr(755,root,root) %{_libdir}/libkdeeduui.so
 %attr(755,root,root) %{_libdir}/libSatLib.so.4
-%attr(755,root,root) %{_libdir}/libSatLib.so.4.1.0
+%attr(755,root,root) %{_libdir}/libSatLib.so.4.2.0
 %attr(755,root,root) %{_libdir}/libkdeeduui.so.4
-%attr(755,root,root) %{_libdir}/libkdeeduui.so.4.1.0
+%attr(755,root,root) %{_libdir}/libkdeeduui.so.4.2.0
 %attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4
-%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4.1.0
-%attr(755,root,root) %{_libdir}/libsbigudrv.so.1
-%attr(755,root,root) %{_libdir}/libsbigudrv.so.1.0.0
+%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4.2.0
+#%attr(755,root,root) %{_libdir}/libsbigudrv.so.1
+#%attr(755,root,root) %{_libdir}/libsbigudrv.so.1.0.0
 %attr(755,root,root) %{_libdir}/libscience.so.4
-%attr(755,root,root) %{_libdir}/libscience.so.4.1.0
+%attr(755,root,root) %{_libdir}/libscience.so.4.2.0
 
 %files kalgebra -f kalgebra.lang
 %defattr(644,root,root,755)
@@ -707,24 +747,31 @@ rm -rf $RPM_BUILD_ROOT
 
 %files marble -f marble.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/libmarble_part.so
-%{_datadir}/kde4/services/marble_part.desktop
-%dir %{_datadir}/apps/marble_part
-%{_datadir}/apps/marble_part/marble_part.rc
+%attr(755,root,root) %{_bindir}/geodatatest
 %attr(755,root,root) %{_bindir}/marble
-%{_desktopdir}/kde4/marble.desktop
-%{_datadir}/config.kcfg/marble.kcfg
-%{_datadir}/apps/marble
+%attr(755,root,root) %{_bindir}/tilecreator
+
+%attr(755,root,root) %ghost %{_libdir}/libmarblewidget.so.4
+%attr(755,root,root) %{_libdir}/libmarblewidget.so.*.*.*
+
+%attr(755,root,root) %{_libdir}/kde4/libmarble_part.so
+
 %dir %{_libdir}/kde4/plugins/marble
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/CompassFloatItem.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleOverviewMap.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/MapScaleFloatItem.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleStarsPlugin.so
-%attr(755,root,root) %{_bindir}/geodatatest
-%attr(755,root,root) %{_bindir}/tilecreator
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleCrosshairsPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleGeoDataPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/NavigationFloatItem.so
+
+%dir %{_datadir}/apps/marble_part
+%{_datadir}/apps/marble
+%{_datadir}/apps/marble_part/marble_part.rc
+%{_datadir}/config.kcfg/marble.kcfg
+%{_datadir}/kde4/services/marble_part.desktop
+%{_desktopdir}/kde4/marble.desktop
 %{_iconsdir}/hicolor/*x*/apps/marble.png
-%attr(755,root,root) %{_libdir}/libmarblewidget.so.4
-%attr(755,root,root) %{_libdir}/libmarblewidget.so.4.1.0
 
 %files parley -f parley.lang
 %defattr(644,root,root,755)
@@ -745,3 +792,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/desktoptheme/default/widgets/parley_plasma_card.svg
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_parley.so
 %{_datadir}/kde4/services/plasma-dataengine-parley.desktop
+
+%files step -f step.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/step
+%{_datadir}/apps/step
+%{_datadir}/config.kcfg/step.kcfg
+%{_datadir}/config/step.knsrc
+%{_desktopdir}/kde4/step.desktop
+%{_iconsdir}/hicolor/*/apps/step.png
+%{_iconsdir}/oxygen/*/actions/pointer.png
+%{_iconsdir}/oxygen/*/actions/step_*.png
