@@ -6,17 +6,17 @@
 #   /usr/lib64/libcompoundviewer.so.4
 #   /usr/lib64/libcompoundviewer.so.4.2.0
 #   /usr/share/kde4/services/plasma-applet-kworldclock.desktop
-%define		_state		unstable
+%define		_state		stable
 %define		orgname		kdeedu
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.1.85
+Version:	4.2.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	2e29ee1e501d46bd00c67c0b5bfdebd4
+# Source0-md5:	aaddbdab29e1d284ad8ee67a78b4c597
 Patch0:		%{name}-kalgebra.patch
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
