@@ -619,7 +619,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libkiten.so.4
 %attr(755,root,root) %{_libdir}/libkiten.so.*.*.*
 %{_datadir}/apps/kiten
-%{_datadir}/apps/kitenradselect/radselectui.rc
+%{_datadir}/apps/kitenradselect
 %{_datadir}/config.kcfg/kiten.kcfg
 %{_desktopdir}/kde4/kiten.desktop
 %{_iconsdir}/hicolor/scalable/apps/kiten.svgz
