@@ -161,7 +161,6 @@ Kig to aplikacja do interaktywnej geometrii. Ma służyć dwóm celom:
 Summary:	A Japanese reference tool
 Summary(pl.UTF-8):	Słownik angielsko-japoński
 Group:		X11/Applications/Science
-Requires:	%{name}-libkiten = %{epoch}:%{version}-%{release}
 
 %description kiten
 Kiten is an application with multiple functions. Firstly, it is a
@@ -235,8 +234,7 @@ Program do nauki procentów.
 Summary:	Desktop planetarium
 Summary(pl.UTF-8):	Planetarium
 Group:		X11/Applications/Science
-Requires:	%{name}-libextdate = %{epoch}:%{version}-%{release}
-Requires:	%{name}-libkdeeduplot = %{epoch}:%{version}-%{release}
+Requires:	kde4-kdeedu-libkdeeducore = %{version}-%{release}
 
 %description kstars
 KStars lets you explore the night sky from the comfort of your
