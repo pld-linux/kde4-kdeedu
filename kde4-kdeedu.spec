@@ -1,11 +1,5 @@
 # TODO:
 # - dep not recognized: libindi-devel - http://indi.sf.net
-# - package:
-#   /usr/lib64/kde4/plasma_applet_worldclock.so
-#   /usr/lib64/libcompoundviewer.so
-#   /usr/lib64/libcompoundviewer.so.4
-#   /usr/lib64/libcompoundviewer.so.4.2.0
-#   /usr/share/kde4/services/plasma-applet-kworldclock.desktop
 %define		_state		stable
 %define		orgname		kdeedu
 Summary:	K Desktop Environment - edutainment
@@ -490,6 +484,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libavogadro-kalzium.so
 %attr(755,root,root) %{_libdir}/libkiten.so
 %attr(755,root,root) %{_libdir}/libmarblewidget.so
+%attr(755,root,root) %{_libdir}/libcompoundviewer.so
 %{_includedir}/libkdeedu
 %{_includedir}/libkiten
 %{_includedir}/marble
@@ -510,8 +505,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_didyouknow.so
 
-%attr(755,root,root) %ghost %{_libdir}/libavogadro-kalzium.so.0
+%attr(755,root,root) %ghost %{_libdir}/libavogadro-kalzium.so.?
 %attr(755,root,root) %{_libdir}/libavogadro-kalzium.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libcompoundviewer.so.?
+%attr(755,root,root) %{_libdir}/libcompoundviewer.so.*.*.*
 
 %dir %{_libdir}/avogadro-kalzium/engines
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liblabelengine.so
@@ -539,6 +536,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kalzium.desktop
 %{_iconsdir}/hicolor/scalable/apps/kalzium.svgz
 %{_iconsdir}/hicolor/*x*/apps/kalzium.png
+%{_mandir}/man1/kalzium.1.gz
 
 %files kanagram -f kanagram.lang
 %defattr(644,root,root,755)
@@ -572,6 +570,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kbruch.desktop
 %{_iconsdir}/hicolor/scalable/apps/kbruch.svgz
 %{_iconsdir}/hicolor/*x*/apps/kbruch.png
+%{_mandir}/man1/kbruch.1.gz
 
 %files kgeography -f kgeography.lang
 %defattr(644,root,root,755)
@@ -595,6 +594,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/khangman.desktop
 %{_iconsdir}/hicolor/scalable/apps/khangman.svgz
 %{_iconsdir}/hicolor/*x*/apps/khangman.png
+%{_mandir}/man6/khangman.6.gz
 
 %files kig -f kig.lang
 %defattr(644,root,root,755)
@@ -608,6 +608,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/kig.svgz
 %{_iconsdir}/hicolor/*x*/mimetypes/application-x-kig.png
 %{_iconsdir}/hicolor/scalable/mimetypes/application-x-kig.svgz
+%{_mandir}/man1/kig.1.gz
 
 # XXX pulls kate dep via dir. subpackage?
 %{_datadir}/apps/katepart/syntax/python-kig.xml
@@ -650,6 +651,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kmplot.desktop
 %{_iconsdir}/hicolor/scalable/apps/kmplot.svgz
 %{_iconsdir}/hicolor/*x*/apps/kmplot.png
+%{_mandir}/man1/kmplot.1.gz
 
 %if 0
 %files kpercentage -f kpercentage.lang
@@ -699,6 +701,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/ktouch.kcfg
 %{_iconsdir}/hicolor/*x*/apps/ktouch.png
 %{_iconsdir}/hicolor/scalable/apps/ktouch.svgz
+%{_mandir}/man1/ktouch.1.gz
 
 %files kturtle -f kturtle.lang
 %defattr(644,root,root,755)
@@ -755,6 +758,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libmarblewidget.so.*.*.*
 
 %attr(755,root,root) %{_libdir}/kde4/libmarble_part.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_applet_worldclock.so
 
 %dir %{_libdir}/kde4/plugins/marble
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/CompassFloatItem.so
@@ -770,6 +774,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/marble_part/marble_part.rc
 %{_datadir}/config.kcfg/marble.kcfg
 %{_datadir}/kde4/services/marble_part.desktop
+%{_datadir}/kde4/services/plasma-applet-kworldclock.desktop
 %{_desktopdir}/kde4/marble.desktop
 %{_iconsdir}/hicolor/*x*/apps/marble.png
 
