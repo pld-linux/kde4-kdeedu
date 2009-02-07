@@ -381,40 +381,43 @@ Podstawowa biblioteka z funkcjami wykorzystywanymi przez aplikacje
 edukacyjne w KDE.
 
 %package kalgebra
-Summary:	kalgebra
-Summary(pl.UTF-8):	kalgebra
+Summary:	Mathematical calculator for KDE
+Summary(pl.UTF-8):	Kalkulator matematyczny dla KDE
 Group:		X11/Libraries
 
 %description kalgebra
-kalgebra.
+KAlgebra is a mathematical calculator based on MathML content markup
+language.
 
 %description kalgebra -l pl.UTF-8
-kalgebra.
+KAlgebra to kalkulator matematyczny oparty na języku znaczników
+MathML.
 
 %package marble
-Summary:	marble
-Summary(pl.UTF-8):	marble
+Summary:	Geographical map for KDE
+Summary(pl.UTF-8):	Mapa geograficzna dla KDE
 Group:		X11/Libraries
 
 %description marble
-marble.
+Marble is a geographical map for KDE.
 
 %description marble -l pl.UTF-8
-marble
+Marble to mapa geograficzna dla KDE.
 
 %package parley
-Summary:	parlay
-Summary(pl.UTF-8):	parley
+Summary:	Parley - KDE program to help you memorize things
+Summary(pl.UTF-8):	Parley - program dla KDE pomagający w zapamiętywaniu
 Group:		X11/Libraries
 
 %description parley
-parley.
+Parley is a KDE program to help you memorize things
 
 %description parley -l pl.UTF-8
-parley.
+Parley to program dla KDE pomagający w zapamiętywaniu
 
 %package step
 Summary:	Step: Interactive Physical Simulator
+Summary(pl.UTF-8):	Step - interaktywny symulator fizyczny
 Group:		X11/Applications
 URL:		http://edu.kde.org/step/
 
@@ -429,6 +432,19 @@ You can change every property of bodies/forces in your experiment
 (even during simulation) and see how this will change evolution of the
 experiment. With Step you can not only learn but feel how physics
 works!
+
+%description step -l pl.UTF-8
+Step to interaktywny symulator fizyczny.
+
+Działa w ten sposób: umieszcza się na scenie jakieś ciała, dodaje siły
+takie jak grawitacja czy sprężyny, a następnie wciska przycisk
+"Symuluj" - a Step pokazuje, jak scena będzie się zmieniała zgodnie z
+prawami fizyki.
+
+W ramach eksperymentu można zmieniać każdą właściwość ciał/sił (nawet
+podczas symulacji) i obserwować, jak zmieni to jego przebieg. Przy
+użyciu Stepa można nie tylko nauczyć się, ale i poczuć, jak działa
+fizyka.
 
 %prep
 %setup -q -n %{orgname}-%{version}
