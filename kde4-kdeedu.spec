@@ -16,7 +16,7 @@ BuildRequires:	cfitsio-devel
 BuildRequires:	eigen
 BuildRequires:	gmm-devel
 BuildRequires:	gpsd-devel
-BuildRequires:	indilib-devel
+BuildRequires:	libindi-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libnova-devel
