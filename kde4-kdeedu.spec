@@ -6,7 +6,7 @@ Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
 Version:	4.2.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -77,6 +77,7 @@ wizualizacje.
 Summary:	Guess anagram game
 Summary(pl.UTF-8):	Gra w zgadywanie anagramów
 Group:		X11/Applications/Science
+Requires:	%{name} = %{version}-%{release}
 
 %description kanagram
 Guess anagram game.
@@ -121,6 +122,7 @@ Program do nauki geografii.
 Summary:	A hangman game
 Summary(pl.UTF-8):	Gra w wisielca
 Group:		X11/Applications/Science
+Requires:	%{name} = %{version}-%{release}
 
 %description khangman
 KHangMan is a game based on the well known hangman game. A word is
@@ -493,6 +495,10 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%files
+%defattr(644,root,root,755)
+%{_datadir}/apps/kvtml
+
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libanalitza.so
@@ -526,6 +532,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libcompoundviewer.so.*.*.*
 
 %dir %{_libdir}/avogadro-kalzium/engines
+%dir %attr(755,root,root) %{_libdir}/avogadro-kalzium/
+%dir %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liblabelengine.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liborbitalengine.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libribbonengine.so
@@ -557,20 +565,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kanagram
 %{_datadir}/apps/kanagram
-%{_datadir}/apps/kvtml/en/clothing.kvtml
-%{_datadir}/apps/kvtml/en/computers.kvtml
-%{_datadir}/apps/kvtml/en/currencies.kvtml
-%{_datadir}/apps/kvtml/en/fruits.kvtml
-%{_datadir}/apps/kvtml/en/inventions.kvtml
-%{_datadir}/apps/kvtml/en/numbers.kvtml
-%{_datadir}/apps/kvtml/en/objects.kvtml
-%{_datadir}/apps/kvtml/en/people.kvtml
-%{_datadir}/apps/kvtml/en/professions.kvtml
-%{_datadir}/apps/kvtml/en/space.kvtml
-%{_datadir}/apps/kvtml/en/sports.kvtml
-%{_datadir}/apps/kvtml/en/transportation.kvtml
-%{_datadir}/apps/kvtml/en/vegetables.kvtml
-%{_datadir}/apps/kvtml/en/worldcapitals.kvtml
 %{_datadir}/config/kanagram.knsrc
 %{_datadir}/config.kcfg/kanagram.kcfg
 %{_desktopdir}/kde4/kanagram.desktop
@@ -600,10 +594,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/khangman
 %{_datadir}/apps/khangman
-%{_datadir}/apps/kvtml/en/animals.kvtml
-%{_datadir}/apps/kvtml/en/easy.kvtml
-%{_datadir}/apps/kvtml/en/hard.kvtml
-%{_datadir}/apps/kvtml/en/medium.kvtml
 %{_datadir}/config.kcfg/khangman.kcfg
 %{_datadir}/config/khangman.knsrc
 %{_desktopdir}/kde4/khangman.desktop
