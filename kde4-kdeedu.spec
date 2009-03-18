@@ -493,6 +493,9 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang parley	--with-kde
 %find_lang step		--with-kde
 
+%post marble -p /sbin/ldconfig
+%postun marble -p /sbin/ldconfig
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
