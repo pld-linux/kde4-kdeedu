@@ -6,7 +6,7 @@ Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
 Version:	4.2.1
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -39,6 +39,7 @@ K Desktop Environment - edukacja i rozrywka.
 Summary:	Header files for kdeedu libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek kdeedu
 Group:		X11/Development/Libraries
+Requires:	%{name}-marble = %{version}-%{release}
 
 %description devel
 Header files for kdeedu libraries.
