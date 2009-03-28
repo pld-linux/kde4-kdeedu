@@ -1,0 +1,37 @@
+--- cmake/modules/FindINDI.cmake.orig	2009-03-28 10:22:14.751715576 +0100
++++ cmake/modules/FindINDI.cmake	2009-03-28 10:27:15.104544199 +0100
+@@ -23,26 +23,31 @@
+   find_path(INDI_INCLUDE_DIR indidevapi.h
+     PATH_SUFFIXES libindi
+     ${_obIncDir}
++    /usr/include
+     ${GNUWIN32_DIR}/include
+   )
+ 
+   find_library(INDI_DRIVER_LIBRARIES NAMES indidriver
+     PATHS
+     ${_obLinkDir}
++    /usr/lib
++    /usr/lib64
+     ${GNUWIN32_DIR}/lib
+   )
+ 
+   find_library(INDI_LIBRARIES NAMES indi
+     PATHS
+     ${_obLinkDir}
++    /usr/lib
++    /usr/lib64
+     ${GNUWIN32_DIR}/lib
+   )
+ 
+-  if(INDI_INCLUDE_DIR AND INDI_LIBRARIES AND INDI_DRIVER_LIBRARIES)
++  if(INDI_INCLUDE_DIR AND INDI_LIBRARIES)
+     set(INDI_FOUND TRUE)
+-  else (INDI_INCLUDE_DIR AND INDI_LIBRARIES AND INDI_DRIVER_LIBRARIES)
++  else (INDI_INCLUDE_DIR AND INDI_LIBRARIES)
+     set(INDI_FOUND FALSE)
+-  endif(INDI_INCLUDE_DIR AND INDI_LIBRARIES AND INDI_DRIVER_LIBRARIES)
++  endif(INDI_INCLUDE_DIR AND INDI_LIBRARIES)
+ 
+ 
+   if (INDI_FOUND)
