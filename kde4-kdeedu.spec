@@ -6,7 +6,7 @@ Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
 Version:	4.2.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -497,6 +497,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %post marble -p /sbin/ldconfig
 %postun marble -p /sbin/ldconfig
+
+%post kiten -p /sbin/ldconfig
+%postun kiten -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
