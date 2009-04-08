@@ -501,6 +501,9 @@ rm -rf $RPM_BUILD_ROOT
 %post kiten -p /sbin/ldconfig
 %postun kiten -p /sbin/ldconfig
 
+%post algebra -p /sbin/ldconfig
+%postun algebra -p /sbin/ldconfig
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
