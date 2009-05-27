@@ -1,25 +1,28 @@
 # TODO:
 # - dep not recognized: libindi-devel - http://indi.sf.net
-%define		_state		stable
+%define		_state		unstable
 %define		orgname		kdeedu
+%define		svn		969966
+
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.2.3
-Release:	3
+Version:	4.2.87
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	c71070469471fc8283c582b8285c44b8
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}svn%{svn}.tar.bz2
+# Source0-md5:	a9466e92e96bce912651e3f7cff12250
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Patch0:		%{name}-findindi.patch
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
 BuildRequires:	eigen
 BuildRequires:	gmm-devel
 BuildRequires:	gpsd-devel
-BuildRequires:	libindi-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	libindi-devel
 BuildRequires:	libnova-devel
 BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
@@ -71,9 +74,9 @@ can lookup lots of information about the elements and also use
 visualizations to show them.
 
 %description kalzium -l pl.UTF-8
-Baza danych Układu Okresowego Pierwiastków. Kalzium dostarcza wszelkie
-informacje dotyczące UOP, informacje o pierwiastkach oraz ich
-wizualizacje.
+Baza danych Układu Okresowego Pierwiastków. Kalzium dostarcza
+wszelkie informacje dotyczące UOP, informacje o pierwiastkach oraz
+ich wizualizacje.
 
 %package kanagram
 Summary:	Guess anagram game
@@ -101,13 +104,13 @@ user can decide if he wants to solve tasks with addition/subtraction
 and/or multiplication/division.
 
 %description kbruch -l pl.UTF-8
-Generator zadań z obliczeniami na ułamkach. KBruch to mały program do
-generowania zadań z ułamkami. Użytkownik ma rozwiązać zadanie poprzez
-wpisanie poprawnej wartości dla licznika i mianownika. Następnie
-program sprawdza poprawność danych. Generowanie zadań można
-dostosowywać przy pomocy różnych parametrów. Użytkownik może
-decydować, czy chce rozwiązywać zadania z dodawaniem/odejmowaniem
-i/lub mnożeniem/dzieleniem.
+Generator zadań z obliczeniami na ułamkach. KBruch to mały program
+do generowania zadań z ułamkami. Użytkownik ma rozwiązać zadanie
+poprzez wpisanie poprawnej wartości dla licznika i mianownika.
+Następnie program sprawdza poprawność danych. Generowanie zadań
+można dostosowywać przy pomocy różnych parametrów. Użytkownik
+może decydować, czy chce rozwiązywać zadania z
+dodawaniem/odejmowaniem i/lub mnożeniem/dzieleniem.
 
 %package kgeography
 Summary:	A geography learning program
@@ -134,12 +137,12 @@ picture of a hangman is drawn. You must guess the word before getting
 hanged! It is aimed for children aged 6+.
 
 %description khangman -l pl.UTF-8
-KHangMan jest grą opartą na popularnej grze w wisielca. Wybierane jest
-losowe słowo, którego litery są ukryte. Trzeba zgadnąć to słowo
-podając kolejno litery. Za każdym razem, gdy podana litera nie
-występuje w słowie, rysowany jest obrazek wisielca. Trzeba odgadnąć
-słowo przed powieszeniem! Gra jest przeznaczona dla dzieci w wieku 6
-lat lub więcej.
+KHangMan jest grą opartą na popularnej grze w wisielca. Wybierane
+jest losowe słowo, którego litery są ukryte. Trzeba zgadnąć to
+słowo podając kolejno litery. Za każdym razem, gdy podana litera
+nie występuje w słowie, rysowany jest obrazek wisielca. Trzeba
+odgadnąć słowo przed powieszeniem! Gra jest przeznaczona dla dzieci
+w wieku 6 lat lub więcej.
 
 %package kig
 Summary:	Interactive Geometry
@@ -158,8 +161,8 @@ two purposes:
 Kig to aplikacja do interaktywnej geometrii. Ma służyć dwóm celom:
 - umożliwić uczniom interaktywnie przeglądanie figur i pojęć
   matematycznych przy użyciu komputera
-- służyć jako narzędzie WYSIWYG do rysowania figur matematycznych i
-  włączania ich do innych dokumentów.
+- służyć jako narzędzie WYSIWYG do rysowania figur matematycznych
+  i włączania ich do innych dokumentów.
 
 %package kiten
 Summary:	A Japanese reference tool
@@ -174,9 +177,9 @@ specific characters; thirdly, it is a tool to help you learn Kanji.
 
 %description kiten -l pl.UTF-8
 Kiten to aplikacja o wielu funkcjach. Po pierwsze, jest wygodnym
-słownikiem angielsko-japońskim i japońsko-angielskim; po drugie, jest
-słownikiem Kanji z wieloma sposobami wyszukiwania określonych znaków;
-po trzecie, jest narzędziem pomagającym w nauce Kanji.
+słownikiem angielsko-japońskim i japońsko-angielskim; po drugie,
+jest słownikiem Kanji z wieloma sposobami wyszukiwania określonych
+znaków; po trzecie, jest narzędziem pomagającym w nauce Kanji.
 
 %package klettres
 Summary:	Helps child to learn alphabet and to read some syllables
@@ -200,13 +203,13 @@ Dutch, French and Slovak.
 KLettres to bardzo prosta aplikacja pomagająca dzieciom i dorosłym w
 nauce alfabetu i głosek we własnym lub obcym języku. Program losuje
 literę lub sylabę, a następnie wyświetla ją i odgrywa dźwięk.
-Użytkownik powinien następnie wpisać tę literę lub sylabę. Do ćwiczeń
-służą poziomy, gdzie litera/sylaba nie jest wyświetlana, jedynie
-dźwięk jest odgrywany. Użytkownik nie musi wiedzieć, jak używać myszy,
-wymagana jest tylko klawiatura.
+Użytkownik powinien następnie wpisać tę literę lub sylabę. Do
+ćwiczeń służą poziomy, gdzie litera/sylaba nie jest wyświetlana,
+jedynie dźwięk jest odgrywany. Użytkownik nie musi wiedzieć, jak
+używać myszy, wymagana jest tylko klawiatura.
 
-Aktualnie dostępne jest pięć języków: czeski, duński, holenderski,
-francuski i słowacki.
+Aktualnie dostępne jest pięć języków: czeski, duński,
+holenderski, francuski i słowacki.
 
 %package kmplot
 Summary:	Mathematical function plotter
@@ -220,8 +223,9 @@ simultaneously and combine them to build new functions.
 
 %description kmplot -l pl.UTF-8
 KmPlot to narzędzie do rysowania wykresów funkcji matematycznych dla
-środowiska KDE. Ma wbudowany potężny parser. Można rysować różne
-funkcje jednocześnie i łączyć je, aby stworzyć nowe funkcje.
+środowiska KDE. Ma wbudowany potężny parser. Można rysować
+różne funkcje jednocześnie i łączyć je, aby stworzyć nowe
+funkcje.
 
 %package kpercentage
 Summary:	A percentage tutor
@@ -252,13 +256,13 @@ the horizon and the ecliptic.
 
 %description kstars -l pl.UTF-8
 KStars pozwala przeglądać nocne niebo z wygodą krzesła przy
-komputerze. Dostarcza dokładną graficzną reprezentację nocnego nieba
-dla dowolnej daty, z dowolnego miejsca na Ziemi. Obraz zawiera 126000
-gwiazd do 9. wielkości (znacznie poza zasięgiem nieuzbrojonego oka),
-13000 obiektów (katalogi Messiera, NGC i IC), wszystkie planety,
-Słońce i Księżyc, setki komet i asteroid, Drogę Mleczną, 88
-konstelacji oraz linie prowadzące takie jak równik astronomiczny,
-horyzont i ekliptykę.
+komputerze. Dostarcza dokładną graficzną reprezentację nocnego
+nieba dla dowolnej daty, z dowolnego miejsca na Ziemi. Obraz zawiera
+126000 gwiazd do 9. wielkości (znacznie poza zasięgiem
+nieuzbrojonego oka), 13000 obiektów (katalogi Messiera, NGC i IC),
+wszystkie planety, Słońce i Księżyc, setki komet i asteroid,
+Drogę Mleczną, 88 konstelacji oraz linie prowadzące takie jak
+równik astronomiczny, horyzont i ekliptykę.
 
 %package ktouch
 Summary:	Program for learning touch typing
@@ -275,13 +279,13 @@ way. It is convenient for all ages, and the perfect typing tutor for
 schools, universities and individuals.
 
 %description ktouch -l pl.UTF-8
-KTouch to program do nauki maszynopisania. Dostarcza tekst do ćwiczeń,
-dostosowany do różnych poziomów, zależnie od stopnia zaawansowania.
-Może wyświetlać, który klawisz trzeba nacisnąć, i którego palca należy
-użyć. Jest świetnym programem do nauki maszynopisania, uczy pisać
-wszystkimi palcami bez patrzenia na klawisze, krok po kroku. Jest
-wygodny w każdym wieku, jest świetny dla szkół, uniwersytetów i
-jednostek.
+KTouch to program do nauki maszynopisania. Dostarcza tekst do
+ćwiczeń, dostosowany do różnych poziomów, zależnie od stopnia
+zaawansowania. Może wyświetlać, który klawisz trzeba nacisnąć, i
+którego palca należy użyć. Jest świetnym programem do nauki
+maszynopisania, uczy pisać wszystkimi palcami bez patrzenia na
+klawisze, krok po kroku. Jest wygodny w każdym wieku, jest świetny
+dla szkół, uniwersytetów i jednostek.
 
 %package kturtle
 Summary:	A Logo interpreter for KDE
@@ -312,14 +316,14 @@ KTurtle features:
 %description kturtle -l pl.UTF-8
 KTurtle to interpreter języka programowania Logo dla KDE. Język Logo
 jest bardzo łatwy, przez co może być używany przez małe dzieci.
-Unikalna jakość Logo polega na tym, że polecenia czy instrukcje mogą
-być tłumaczone (proszę zobaczyć howto dla tłumaczy, aby pomóc przy
-tłumaczeniu na własny język), dzięki czemu "programista" może
-programować w języku ojczystym. To czyni Logo idealnym do nauki dzieci
-podstaw programowania, matematyki i geometrii. Jednym z powodów, dla
-których wiele dzieci lubi Logo, jest żółw - programowalna ikona, którą
-można przesuwać po ekranie prostymi poleceniami i programować do
-rysowania obiektów.
+Unikalna jakość Logo polega na tym, że polecenia czy instrukcje
+mogą być tłumaczone (proszę zobaczyć howto dla tłumaczy, aby
+pomóc przy tłumaczeniu na własny język), dzięki czemu
+"programista" może programować w języku ojczystym. To czyni Logo
+idealnym do nauki dzieci podstaw programowania, matematyki i
+geometrii. Jednym z powodów, dla których wiele dzieci lubi Logo,
+jest żółw - programowalna ikona, którą można przesuwać po
+ekranie prostymi poleceniami i programować do rysowania obiektów.
 
 Możliwości KTurtle:
 - zintegrowany interpreter Logo, nie trzeba ściągać żadnego innego
@@ -357,16 +361,16 @@ Fill-in-the-blank mode.
 %description kwordquiz -l pl.UTF-8
 KWordQuiz to wersja KDE programu WordQuiz służącego do nauki
 słownictwa za pomocą pokazywania kart. Jest to narzędzie do nauki
-słownictwa nowego języka. Można zacząć używać jego potencjału do
-łatwego uczenia się słownictwa.
+słownictwa nowego języka. Można zacząć używać jego potencjału
+do łatwego uczenia się słownictwa.
 
 Słowniki buduje się w dwukolumnowej tabeli (lub wczytuje z plików
 .kvtml z kvoctraina). W jednej kolumnie wpisuje się słowa lub
 wyrażenia w jednym języku, a w drugiej kolumnie ich odpowiedniki w
-innym języku. Można także używać programu do ćwiczenia innych rzeczy,
-jeśli tylko mają parowalną relację - na przykład terminologii
-medycznej czy prawniczej. Na screenshotach widać przykład z różnymi
-stanami USA i ich stolicami.
+innym języku. Można także używać programu do ćwiczenia innych
+rzeczy, jeśli tylko mają parowalną relację - na przykład
+terminologii medycznej czy prawniczej. Na screenshotach widać
+przykład z różnymi stanami USA i ich stolicami.
 
 KWordQuiz zawiera także funkcje Flashcard (pokazywania kart), testu
 wielokrotnego wyboru oraz pytań i odpowiedzi. Pytania i odpowiedzi
@@ -419,39 +423,8 @@ Parley is a KDE program to help you memorize things
 %description parley -l pl.UTF-8
 Parley to program dla KDE pomagający w zapamiętywaniu
 
-%package step
-Summary:	Step: Interactive Physical Simulator
-Summary(pl.UTF-8):	Step - interaktywny symulator fizyczny
-Group:		X11/Applications
-URL:		http://edu.kde.org/step/
-
-%description step
-Step is an interactive physical simulator.
-
-It works like this: you place some bodies on the scene, add some
-forces such as gravity or springs, then click "Simulate" and Step
-shows you how your scene will evolve according to the laws of physics.
-
-You can change every property of bodies/forces in your experiment
-(even during simulation) and see how this will change evolution of the
-experiment. With Step you can not only learn but feel how physics
-works!
-
-%description step -l pl.UTF-8
-Step to interaktywny symulator fizyczny.
-
-Działa w ten sposób: umieszcza się na scenie jakieś ciała, dodaje siły
-takie jak grawitacja czy sprężyny, a następnie wciska przycisk
-"Symuluj" - a Step pokazuje, jak scena będzie się zmieniała zgodnie z
-prawami fizyki.
-
-W ramach eksperymentu można zmieniać każdą właściwość ciał/sił (nawet
-podczas symulacji) i obserwować, jak zmieni to jego przebieg. Przy
-użyciu Stepa można nie tylko nauczyć się, ale i poczuć, jak działa
-fizyka.
-
 %prep
-%setup -q -n %{orgname}-%{version}
+%setup -q -n %{orgname}-%{version}svn%{svn}
 %patch0 -p0
 
 %build
@@ -493,7 +466,6 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang kwordquiz	--with-kde
 %find_lang marble	--with-kde
 %find_lang parley	--with-kde
-%find_lang step		--with-kde
 
 %post marble -p /sbin/ldconfig
 %postun marble -p /sbin/ldconfig
@@ -514,10 +486,10 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libanalitza.so
-%attr(755,root,root) %{_libdir}/libavogadro-kalzium.so
+#%attr(755,root,root) %{_libdir}/libavogadro-kalzium.so
 %attr(755,root,root) %{_libdir}/libkiten.so
 %attr(755,root,root) %{_libdir}/libmarblewidget.so
-%attr(755,root,root) %{_libdir}/libcompoundviewer.so
+#%attr(755,root,root) %{_libdir}/libcompoundviewer.so
 %{_includedir}/libkdeedu
 %{_includedir}/libkiten
 %{_includedir}/marble
@@ -538,29 +510,29 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_didyouknow.so
 
-%attr(755,root,root) %ghost %{_libdir}/libavogadro-kalzium.so.?
-%attr(755,root,root) %{_libdir}/libavogadro-kalzium.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcompoundviewer.so.?
-%attr(755,root,root) %{_libdir}/libcompoundviewer.so.*.*.*
+#%attr(755,root,root) %ghost %{_libdir}/libavogadro-kalzium.so.?
+#%attr(755,root,root) %{_libdir}/libavogadro-kalzium.so.*.*.*
+#%attr(755,root,root) %ghost %{_libdir}/libcompoundviewer.so.?
+#%attr(755,root,root) %{_libdir}/libcompoundviewer.so.*.*.*
 
-%dir %{_libdir}/avogadro-kalzium/engines
-%dir %attr(755,root,root) %{_libdir}/avogadro-kalzium/
-%dir %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liblabelengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liborbitalengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libribbonengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libringengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libsphereengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libstickengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libwireengine.so
+#%dir %{_libdir}/avogadro-kalzium/engines
+#%dir %attr(755,root,root) %{_libdir}/avogadro-kalzium/
+#%dir %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines
+#%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liblabelengine.so
+#%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liborbitalengine.so
+#%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libribbonengine.so
+#%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libringengine.so
+#%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libsphereengine.so
+#%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libstickengine.so
+#%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libwireengine.so
 
-%dir %{_libdir}/avogadro-kalzium/tools
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libclickmeasuretool.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libdrawtool.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libnavigatetool.so
+#%dir %{_libdir}/avogadro-kalzium/tools
+#%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libclickmeasuretool.so
+#%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libdrawtool.so
+#%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libnavigatetool.so
 
 # XXX: ugly dir deps? -> devel?
-%attr(755,root,root) %{_libdir}/kde4/plugins/designer/kalziumuiwidgets.so
+#%attr(755,root,root) %{_libdir}/kde4/plugins/designer/kalziumuiwidgets.so
 
 %{_datadir}/apps/desktoptheme/default/widgets/chalkboard.svg
 %{_datadir}/apps/kalzium
@@ -571,7 +543,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kalzium.desktop
 %{_iconsdir}/hicolor/scalable/apps/kalzium.svgz
 %{_iconsdir}/hicolor/*x*/apps/kalzium.png
-%{_mandir}/man1/kalzium.1.gz
+%{_mandir}/man1/kalzium.1*
 
 %files kanagram -f kanagram.lang
 %defattr(644,root,root,755)
@@ -591,7 +563,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kbruch.desktop
 %{_iconsdir}/hicolor/scalable/apps/kbruch.svgz
 %{_iconsdir}/hicolor/*x*/apps/kbruch.png
-%{_mandir}/man1/kbruch.1.gz
+%{_mandir}/man1/kbruch.1*
 
 %files kgeography -f kgeography.lang
 %defattr(644,root,root,755)
@@ -611,7 +583,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/khangman.desktop
 %{_iconsdir}/hicolor/scalable/apps/khangman.svgz
 %{_iconsdir}/hicolor/*x*/apps/khangman.png
-%{_mandir}/man6/khangman.6.gz
+%{_mandir}/man6/khangman.6*
 
 %files kig -f kig.lang
 %defattr(644,root,root,755)
@@ -625,7 +597,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/kig.svgz
 %{_iconsdir}/hicolor/*x*/mimetypes/application-x-kig.png
 %{_iconsdir}/hicolor/scalable/mimetypes/application-x-kig.svgz
-%{_mandir}/man1/kig.1.gz
+%{_mandir}/man1/kig.1*
 
 # XXX pulls kate dep via dir. subpackage?
 %{_datadir}/apps/katepart/syntax/python-kig.xml
@@ -668,7 +640,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kmplot.desktop
 %{_iconsdir}/hicolor/scalable/apps/kmplot.svgz
 %{_iconsdir}/hicolor/*x*/apps/kmplot.png
-%{_mandir}/man1/kmplot.1.gz
+%{_mandir}/man1/kmplot.1*
 
 %if 0
 %files kpercentage -f kpercentage.lang
@@ -718,7 +690,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/ktouch.kcfg
 %{_iconsdir}/hicolor/*x*/apps/ktouch.png
 %{_iconsdir}/hicolor/scalable/apps/ktouch.svgz
-%{_mandir}/man1/ktouch.1.gz
+%{_mandir}/man1/ktouch.1*
 
 %files kturtle -f kturtle.lang
 %defattr(644,root,root,755)
@@ -744,15 +716,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/libkdeedu
 %attr(755,root,root) %{_libdir}/libkdeeduui.so
 %attr(755,root,root) %{_libdir}/libSatLib.so.4
-%attr(755,root,root) %{_libdir}/libSatLib.so.4.2.0
+%attr(755,root,root) %{_libdir}/libSatLib.so.4.3.0
 %attr(755,root,root) %{_libdir}/libkdeeduui.so.4
-%attr(755,root,root) %{_libdir}/libkdeeduui.so.4.2.0
+%attr(755,root,root) %{_libdir}/libkdeeduui.so.4.3.0
 %attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4
-%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4.2.0
+%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4.3.0
 #%attr(755,root,root) %{_libdir}/libsbigudrv.so.1
 #%attr(755,root,root) %{_libdir}/libsbigudrv.so.1.0.0
 %attr(755,root,root) %{_libdir}/libscience.so.4
-%attr(755,root,root) %{_libdir}/libscience.so.4.2.0
+%attr(755,root,root) %{_libdir}/libscience.so.4.3.0
 
 %files kalgebra -f kalgebra.lang
 %defattr(644,root,root,755)
@@ -779,12 +751,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_libdir}/kde4/plugins/marble
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/CompassFloatItem.so
-%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleOverviewMap.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/MapScaleFloatItem.so
-%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleStarsPlugin.so
-%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleCrosshairsPlugin.so
-%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleGeoDataPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/NavigationFloatItem.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/CrosshairsPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/FileViewFloatItem.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/GeoRendererPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/GpsdPositionProviderPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/GraticulePlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/OverviewMap.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/Photo.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/QHttpNetworkPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/StarsPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/Wikipedia.so
 
 %dir %{_datadir}/apps/marble_part
 %{_datadir}/apps/marble
@@ -814,14 +792,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/desktoptheme/default/widgets/parley_plasma_card.svg
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_parley.so
 %{_datadir}/kde4/services/plasma-dataengine-parley.desktop
-
-%files step -f step.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/step
-%{_datadir}/apps/step
-%{_datadir}/config.kcfg/step.kcfg
-%{_datadir}/config/step.knsrc
-%{_desktopdir}/kde4/step.desktop
-%{_iconsdir}/hicolor/*/apps/step.png
-%{_iconsdir}/oxygen/*/actions/pointer.png
-%{_iconsdir}/oxygen/*/actions/step_*.png
