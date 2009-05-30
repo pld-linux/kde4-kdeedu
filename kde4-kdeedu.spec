@@ -2,17 +2,17 @@
 # - dep not recognized: libindi-devel - http://indi.sf.net
 %define		_state		unstable
 %define		orgname		kdeedu
-%define		svn		969966
+%define		svn		973768
 
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.2.87
+Version:	4.2.88
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}svn%{svn}.tar.bz2
-# Source0-md5:	a9466e92e96bce912651e3f7cff12250
+# Source0-md5:	6f6f6d96aee3f88204a9a3c1f7455e32
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Patch0:		%{name}-findindi.patch
 BuildRequires:	boost-python-devel
