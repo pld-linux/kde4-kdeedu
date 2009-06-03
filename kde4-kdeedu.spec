@@ -5,12 +5,12 @@
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.2.3
-Release:	3
+Version:	4.2.4
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	c71070469471fc8283c582b8285c44b8
+# Source0-md5:	007f3fd746e4a20dec255b8b5bae6023
 Patch0:		%{name}-findindi.patch
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
