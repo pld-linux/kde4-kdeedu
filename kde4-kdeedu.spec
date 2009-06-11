@@ -1,23 +1,26 @@
 # TODO:
 # - dep not recognized: libindi-devel - http://indi.sf.net
+# %files and -step subpackage
 %define		_state		unstable
 %define		orgname		kdeedu
-%define		svn		973768
+%define		svn		979380
 
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.2.88
-Release:	1
+Version:	4.2.91
+Release:	0.1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}svn%{svn}.tar.bz2
-# Source0-md5:	6f6f6d96aee3f88204a9a3c1f7455e32
+# Source0-md5:	8a70cac475c2b639f0a9ca58120d74d4
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Patch0:		%{name}-findindi.patch
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
-BuildRequires:	eigen
+BuildRequires:	xplanet >= 1.0
+BuildRequires:	eigen-devel >= 2.0.51
+BuildRequires:	gsl-devel >= 1.8
 BuildRequires:	gmm-devel
 BuildRequires:	gpsd-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
@@ -760,7 +763,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/GraticulePlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/OverviewMap.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/Photo.so
-%attr(755,root,root) %{_libdir}/kde4/plugins/marble/QHttpNetworkPlugin.so
+#%attr(755,root,root) %{_libdir}/kde4/plugins/marble/QHttpNetworkPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/StarsPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/Wikipedia.so
 
