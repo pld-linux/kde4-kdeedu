@@ -8,12 +8,12 @@
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.2.91
+Version:	4.2.95
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}svn%{svn}.tar.bz2
-# Source0-md5:	8a70cac475c2b639f0a9ca58120d74d4
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+# Source0-md5:	3f4ce05288b5e02b76fef538030ffb6c
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Patch0:		%{name}-findindi.patch
 BuildRequires:	boost-python-devel
@@ -33,7 +33,7 @@ BuildRequires:	openbabel-devel >= 2.2.0
 BuildRequires:	python-sip-devel
 BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	xplanet >= 1.0
+#BuildRequires:	xplanet >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -457,7 +457,7 @@ użyciu Stepa można nie tylko nauczyć się, ale i poczuć, jak działa
 fizyka.
 
 %prep
-%setup -q -n %{orgname}-%{version}svn%{svn}
+%setup -q -n %{orgname}-%{version}
 %patch0 -p0
 
 %build
