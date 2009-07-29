@@ -1,25 +1,29 @@
 # TODO:
 # - dep not recognized: libindi-devel - http://indi.sf.net
+
 %define		_state		stable
 %define		orgname		kdeedu
+
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.2.4
-Release:	2
+Version:	4.3.0
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	007f3fd746e4a20dec255b8b5bae6023
+# Source0-md5:	4c309bcdc47274cea6f61206a42ef638
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Patch0:		%{name}-findindi.patch
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
-BuildRequires:	eigen
+BuildRequires:	eigen-devel >= 2.0.51
 BuildRequires:	gmm-devel
 BuildRequires:	gpsd-devel
-BuildRequires:	libindi-devel
+BuildRequires:	gsl-devel >= 1.8
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	libindi-devel
 BuildRequires:	libnova-devel
 BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
@@ -28,6 +32,7 @@ BuildRequires:	openbabel-devel >= 2.2.0
 BuildRequires:	python-sip-devel
 BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
+#BuildRequires:	xplanet >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -459,6 +464,7 @@ install -d build
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DLIB_INSTALL_DIR=%{_libdir} \
 	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
 	-DCMAKE_BUILD_TYPE=%{!?debug:release}%{?debug:debug} \
 %if "%{_lib}" == "lib64"
@@ -544,20 +550,41 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libcompoundviewer.so.*.*.*
 
 %dir %{_libdir}/avogadro-kalzium/engines
-%dir %attr(755,root,root) %{_libdir}/avogadro-kalzium/
-%dir %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines
+%dir %{_libdir}/avogadro-kalzium/
+%dir %{_libdir}/avogadro-kalzium/colors
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/colors/libchargecolor.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/colors/libdistancecolor.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/colors/libindexcolor.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/colors/libresiduecolor.so
+
+%dir %{_libdir}/avogadro-kalzium/engines
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libaxesengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libcartoonengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libdipoleengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libforceengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libhbondengine.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liblabelengine.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liborbitalengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liboverlayengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libpolygonengine.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libribbonengine.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libringengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libsimplewireengine.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libsphereengine.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libstickengine.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libsurfaceengine.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libwireengine.so
 
 %dir %{_libdir}/avogadro-kalzium/tools
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libaligntool.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libautoopttool.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libautorotatetool.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libbondcentrictool.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libclickmeasuretool.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libdrawtool.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libmanipulatetool.so
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libnavigatetool.so
+%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libselectrotatetool.so
 
 # XXX: ugly dir deps? -> devel?
 %attr(755,root,root) %{_libdir}/kde4/plugins/designer/kalziumuiwidgets.so
@@ -571,7 +598,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kalzium.desktop
 %{_iconsdir}/hicolor/scalable/apps/kalzium.svgz
 %{_iconsdir}/hicolor/*x*/apps/kalzium.png
-%{_mandir}/man1/kalzium.1.gz
+%{_mandir}/man1/kalzium.1*
 
 %files kanagram -f kanagram.lang
 %defattr(644,root,root,755)
@@ -591,7 +618,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kbruch.desktop
 %{_iconsdir}/hicolor/scalable/apps/kbruch.svgz
 %{_iconsdir}/hicolor/*x*/apps/kbruch.png
-%{_mandir}/man1/kbruch.1.gz
+%{_mandir}/man1/kbruch.1*
 
 %files kgeography -f kgeography.lang
 %defattr(644,root,root,755)
@@ -611,7 +638,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/khangman.desktop
 %{_iconsdir}/hicolor/scalable/apps/khangman.svgz
 %{_iconsdir}/hicolor/*x*/apps/khangman.png
-%{_mandir}/man6/khangman.6.gz
+%{_mandir}/man6/khangman.6*
 
 %files kig -f kig.lang
 %defattr(644,root,root,755)
@@ -625,7 +652,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/kig.svgz
 %{_iconsdir}/hicolor/*x*/mimetypes/application-x-kig.png
 %{_iconsdir}/hicolor/scalable/mimetypes/application-x-kig.svgz
-%{_mandir}/man1/kig.1.gz
+%{_mandir}/man1/kig.1*
 
 # XXX pulls kate dep via dir. subpackage?
 %{_datadir}/apps/katepart/syntax/python-kig.xml
@@ -668,7 +695,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kmplot.desktop
 %{_iconsdir}/hicolor/scalable/apps/kmplot.svgz
 %{_iconsdir}/hicolor/*x*/apps/kmplot.png
-%{_mandir}/man1/kmplot.1.gz
+%{_mandir}/man1/kmplot.1*
 
 %if 0
 %files kpercentage -f kpercentage.lang
@@ -718,7 +745,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/ktouch.kcfg
 %{_iconsdir}/hicolor/*x*/apps/ktouch.png
 %{_iconsdir}/hicolor/scalable/apps/ktouch.svgz
-%{_mandir}/man1/ktouch.1.gz
+%{_mandir}/man1/ktouch.1*
 
 %files kturtle -f kturtle.lang
 %defattr(644,root,root,755)
@@ -744,15 +771,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/libkdeedu
 %attr(755,root,root) %{_libdir}/libkdeeduui.so
 %attr(755,root,root) %{_libdir}/libSatLib.so.4
-%attr(755,root,root) %{_libdir}/libSatLib.so.4.2.0
+%attr(755,root,root) %{_libdir}/libSatLib.so.4.3.0
 %attr(755,root,root) %{_libdir}/libkdeeduui.so.4
-%attr(755,root,root) %{_libdir}/libkdeeduui.so.4.2.0
+%attr(755,root,root) %{_libdir}/libkdeeduui.so.4.3.0
 %attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4
-%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4.2.0
+%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4.3.0
 #%attr(755,root,root) %{_libdir}/libsbigudrv.so.1
 #%attr(755,root,root) %{_libdir}/libsbigudrv.so.1.0.0
 %attr(755,root,root) %{_libdir}/libscience.so.4
-%attr(755,root,root) %{_libdir}/libscience.so.4.2.0
+%attr(755,root,root) %{_libdir}/libscience.so.4.3.0
 
 %files kalgebra -f kalgebra.lang
 %defattr(644,root,root,755)
@@ -779,12 +806,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_libdir}/kde4/plugins/marble
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/CompassFloatItem.so
-%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleOverviewMap.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/MapScaleFloatItem.so
-%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleStarsPlugin.so
-%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleCrosshairsPlugin.so
-%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MarbleGeoDataPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/NavigationFloatItem.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/CrosshairsPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/GeoRendererPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/GpsdPositionProviderPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/GraticulePlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/OverviewMap.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/Photo.so
+#%attr(755,root,root) %{_libdir}/kde4/plugins/marble/QHttpNetworkPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/QNamNetworkPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/StarsPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/Wikipedia.so
 
 %dir %{_datadir}/apps/marble_part
 %{_datadir}/apps/marble
