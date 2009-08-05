@@ -8,7 +8,7 @@ Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
 Version:	4.3.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -856,5 +856,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config/step.knsrc
 %{_desktopdir}/kde4/step.desktop
 %{_iconsdir}/hicolor/*/apps/step.png
-%{_iconsdir}/oxygen/*/actions/pointer.png
+# already in oxygen icons
+#%{_iconsdir}/oxygen/*/actions/pointer.png
 %{_iconsdir}/oxygen/*/actions/step_*.png
