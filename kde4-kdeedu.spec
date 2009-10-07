@@ -1,19 +1,22 @@
 # TODO:
 # - dep not recognized: libindi-devel - http://indi.sf.net
+#   * Qalculate (0.9.5 or higher)  <http://qalculate.sourceforge.net/>
+#     A multi-purpose desktop calculator
+#     Enable unit conversion support in Step
 
-%define		_state		stable
+%define		_state		unstable
 %define		orgname		kdeedu
+%define		snap		svn1027298
 
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.3.2
+Version:	4.3.69
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	d96d87627471d5b34ccfbb44a5fa50f8
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}%{snap}.tar.bz2
 Patch0:		%{name}-findindi.patch
 BuildRequires:	QtOpenGL-devel
 BuildRequires:	QtWebKit-devel
@@ -34,7 +37,7 @@ BuildRequires:	openbabel-devel >= 2.2.0
 BuildRequires:	python-sip-devel
 BuildRequires:	readline-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
-#BuildRequires:	xplanet >= 1.0
+BuildRequires:	xplanet >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -48,6 +51,7 @@ Summary:	Header files for kdeedu libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek kdeedu
 Group:		X11/Development/Libraries
 Requires:	%{name}-marble = %{version}-%{release}
+Requires:	%{name}-libkdeeducore = %{version}-%{release}
 
 %description devel
 Header files for kdeedu libraries.
@@ -458,7 +462,8 @@ użyciu Stepa można nie tylko nauczyć się, ale i poczuć, jak działa
 fizyka.
 
 %prep
-%setup -q -n %{orgname}-%{version}
+%setup -q -n %{orgname}-%{version}%{snap}
+#%setup -q -n %{orgname}-%{version}
 %patch0 -p0
 
 %build
@@ -472,6 +477,7 @@ cd build
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif
+	-DEXPERIMENTAL_PYTHON_BINDINGS=FALSE \
 	../
 
 %{__make}
@@ -521,6 +527,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libSatLib.so
+%attr(755,root,root) %{_libdir}/libkeduvocdocument.so
+%attr(755,root,root) %{_libdir}/libscience.so
+%attr(755,root,root) %{_libdir}/libkdeeduui.so
 %attr(755,root,root) %{_libdir}/libanalitza.so
 %attr(755,root,root) %{_libdir}/libavogadro-kalzium.so
 %attr(755,root,root) %{_libdir}/libkiten.so
@@ -545,13 +555,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kalzium
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_didyouknow.so
+%attr(755,root,root) %{_libdir}/kde4/concentrationCalculator.so
+%attr(755,root,root) %{_libdir}/kde4/gasCalculator.so
+%attr(755,root,root) %{_libdir}/kde4/nuclearCalculator.so
 
 %attr(755,root,root) %ghost %{_libdir}/libavogadro-kalzium.so.?
 %attr(755,root,root) %{_libdir}/libavogadro-kalzium.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libcompoundviewer.so.?
 %attr(755,root,root) %{_libdir}/libcompoundviewer.so.*.*.*
 
-%dir %{_libdir}/avogadro-kalzium/engines
 %dir %{_libdir}/avogadro-kalzium/
 %dir %{_libdir}/avogadro-kalzium/colors
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/colors/libchargecolor.so
@@ -597,6 +609,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/kalzium.kcfg
 %{_datadir}/kde4/services/plasma-dataengine-kalzium.desktop
 %{_datadir}/kde4/services/plasma_didyouknow.desktop
+%{_datadir}/kde4/services/concentrationCalculator.desktop
+%{_datadir}/kde4/services/gasCalculator.desktop
+%{_datadir}/kde4/services/nuclearCalculator.desktop
 %{_desktopdir}/kde4/kalzium.desktop
 %{_iconsdir}/hicolor/scalable/apps/kalzium.svgz
 %{_iconsdir}/hicolor/*x*/apps/kalzium.png
@@ -711,7 +726,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kstars -f kstars.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libSatLib.so
 %attr(755,root,root) %{_libdir}/libhtmesh.a
 #%attr(755,root,root) %{_libdir}/libsbigudrv.so
 #%attr(755,root,root) %{_bindir}/indiserver
@@ -768,20 +782,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libkdeeducore
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkeduvocdocument.so
-%attr(755,root,root) %{_libdir}/libscience.so
 %{_datadir}/apps/libkdeedu
-%attr(755,root,root) %{_libdir}/libkdeeduui.so
-%attr(755,root,root) %{_libdir}/libSatLib.so.4
-%attr(755,root,root) %{_libdir}/libSatLib.so.4.3.0
-%attr(755,root,root) %{_libdir}/libkdeeduui.so.4
-%attr(755,root,root) %{_libdir}/libkdeeduui.so.4.3.0
-%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4
-%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4.3.0
+%attr(755,root,root) %ghost %{_libdir}/libSatLib.so.?
+%attr(755,root,root) %{_libdir}/libSatLib.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkdeeduui.so.?
+%attr(755,root,root) %{_libdir}/libkdeeduui.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkeduvocdocument.so.?
+%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.*.*.*
 #%attr(755,root,root) %{_libdir}/libsbigudrv.so.1
 #%attr(755,root,root) %{_libdir}/libsbigudrv.so.1.0.0
-%attr(755,root,root) %{_libdir}/libscience.so.4
-%attr(755,root,root) %{_libdir}/libscience.so.4.3.0
+%attr(755,root,root) %ghost %{_libdir}/libscience.so.?
+%attr(755,root,root) %{_libdir}/libscience.so.*.*.*
 
 %files kalgebra -f kalgebra.lang
 %defattr(644,root,root,755)
@@ -815,10 +826,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/GpsdPositionProviderPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/GraticulePlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/OverviewMap.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/OsmAnnotatePlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/Photo.so
 #%attr(755,root,root) %{_libdir}/kde4/plugins/marble/QHttpNetworkPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/QNamNetworkPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/StarsPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/Weather.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/Wikipedia.so
 
 %dir %{_datadir}/apps/marble_part
