@@ -1,5 +1,3 @@
-# TODO:
-# - dep not recognized: libindi-devel - http://indi.sf.net
 
 %define		_state		unstable
 %define		orgname		kdeedu
