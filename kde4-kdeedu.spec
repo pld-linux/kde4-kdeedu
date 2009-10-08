@@ -28,7 +28,10 @@ BuildRequires:	gpsd-devel
 BuildRequires:	gsl-devel >= 1.8
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	libqalculate-devel >= 0.9.5
 BuildRequires:	libindi-devel
+# here is indidriver
+BuildRequires:	libindi-static
 BuildRequires:	libnova-devel
 BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
