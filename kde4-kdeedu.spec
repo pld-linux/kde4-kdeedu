@@ -1,8 +1,5 @@
 # TODO:
 # - dep not recognized: libindi-devel - http://indi.sf.net
-#   * Qalculate (0.9.5 or higher)  <http://qalculate.sourceforge.net/>
-#     A multi-purpose desktop calculator
-#     Enable unit conversion support in Step
 
 %define		_state		unstable
 %define		orgname		kdeedu
