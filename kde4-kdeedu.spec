@@ -1,17 +1,18 @@
 
 %define		_state		unstable
 %define		orgname		kdeedu
-%define		snap		svn1027298
+%define		snap		svn1035674
 
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.3.69
+Version:	4.3.72
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}%{snap}.tar.bz2
+# Source0-md5:	fe6c43ee043d799f386a337135b7a072
 Patch0:		%{name}-findindi.patch
 BuildRequires:	QtOpenGL-devel
 BuildRequires:	QtWebKit-devel
@@ -25,8 +26,6 @@ BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libqalculate-devel >= 0.9.5
 BuildRequires:	libindi-devel
-# here is indidriver
-BuildRequires:	libindi-static
 BuildRequires:	libnova-devel
 BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
