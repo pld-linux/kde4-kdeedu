@@ -1,18 +1,18 @@
 
 %define		_state		unstable
 %define		orgname		kdeedu
-%define		snap		svn1035674
+%define		snap		svn1040395
 
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.3.72
+Version:	4.3.73
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}%{snap}.tar.bz2
-# Source0-md5:	fe6c43ee043d799f386a337135b7a072
+# Source0-md5:	d0876b58466495206ae0d50cf2605dd5
 Patch0:		%{name}-findindi.patch
 BuildRequires:	QtOpenGL-devel
 BuildRequires:	QtWebKit-devel
