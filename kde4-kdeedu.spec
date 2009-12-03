@@ -6,13 +6,12 @@
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.3.73
+Version:	4.3.80
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}%{snap}.tar.bz2
-# Source0-md5:	d0876b58466495206ae0d50cf2605dd5
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+# Source0-md5:	0ed77c40ad2b7fe30977e81f3e52ea35
 Patch0:		%{name}-findindi.patch
 BuildRequires:	QtOpenGL-devel
 BuildRequires:	QtWebKit-devel
@@ -68,8 +67,8 @@ KDE version of the well-known game Simon Says.
 Wersja KDE dobrze znanej gry "Simon Says".
 
 %package cantor
-Summary:	cantor
-Summary(pl.UTF-8):	cantor
+Summary:	Cantor
+Summary(pl.UTF-8):	Cantor
 Group:		X11/Applications/Science
 
 %description cantor
@@ -77,6 +76,17 @@ Cantor.
 
 %description cantor -l pl.UTF-8
 Cantor.
+
+%package rocs
+Summary:	Rocs Graph Theory
+Summary(pl.UTF-8):	Rocs - Teoria Wykresów
+Group:		X11/Applications/Science
+
+%description rocs
+Graph Theory Tool for Professors and Students.
+
+%description rocs -l pl.UTF-8
+Teoria wykresów dla profesorów oraz studentów.
 
 %package kalzium
 Summary:	A Periodic System of Elements database
@@ -471,8 +481,7 @@ przebieg. Przy użyciu Stepa można nie tylko nauczyć się, ale i
 poczuć, jak działa fizyka.
 
 %prep
-%setup -q -n %{orgname}-%{version}%{snap}
-#%setup -q -n %{orgname}-%{version}
+%setup -q -n %{orgname}-%{version}
 %patch0 -p0
 
 %build
@@ -517,6 +526,7 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang kwordquiz	--with-kde
 %find_lang marble	--with-kde
 %find_lang parley	--with-kde
+%find_lang rocs		--with-kde
 %find_lang step		--with-kde
 
 %post marble -p /sbin/ldconfig
@@ -542,6 +552,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libscience.so
 %attr(755,root,root) %{_libdir}/libkdeeduui.so
 %attr(755,root,root) %{_libdir}/libanalitza.so
+%attr(755,root,root) %{_libdir}/libanalitzagui.so
 %attr(755,root,root) %{_libdir}/libavogadro-kalzium.so
 %attr(755,root,root) %{_libdir}/libkiten.so
 %attr(755,root,root) %{_libdir}/libmarblewidget.so
@@ -569,8 +580,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/cantor_eigenvectorsassistant.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_integrateassistant.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_invertmatrixassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_kalgebrabackend.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_maximabackend.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_nullbackend.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_plot2dassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_plot3dassistant.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_runscriptassistant.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_sagebackend.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_solveassistant.so
@@ -578,6 +592,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libcantorlibs.so
 %attr(755,root,root) %{_libdir}/libcantorlibs.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libcantorlibs.so.?
+%attr(755,root,root) %{_libdir}/libcantor_config.so
 %{_desktopdir}/kde4/cantor.desktop
 %{_desktopdir}/kde4/cantor_part.desktop
 %{_datadir}/apps/cantor
@@ -601,14 +616,26 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/cantor/eigenvectorsassistant.desktop
 %{_datadir}/kde4/services/cantor/integrateassistant.desktop
 %{_datadir}/kde4/services/cantor/invertmatrixassistant.desktop
+%{_datadir}/kde4/services/cantor/kalgebrabackend.desktop
 %{_datadir}/kde4/services/cantor/maximabackend.desktop
 %{_datadir}/kde4/services/cantor/nullbackend.desktop
+%{_datadir}/kde4/services/cantor/plot2dassistant.desktop
+%{_datadir}/kde4/services/cantor/plot3dassistant.desktop
 %{_datadir}/kde4/services/cantor/runscriptassistant.desktop
 %{_datadir}/kde4/services/cantor/sagebackend.desktop
 %{_datadir}/kde4/services/cantor/solveassistant.desktop
 %{_datadir}/kde4/servicetypes/cantor_assistant.desktop
 %{_datadir}/kde4/servicetypes/cantor_backend.desktop
-%{_kdedocdir}/en/cantor
+#%{_kdedocdir}/en/cantor
+
+%files rocs -f rocs.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/rocs
+%{_datadir}/applications/kde4/rocs.desktop                                                                                   
+%{_datadir}/apps/rocs
+%{_datadir}/config.kcfg/rocs.kcfg                                                                                            
+%{_iconsdir}/hicolor/*x*/actions/rocs*.png
+%{_kdedocdir}/en/rocs
 
 %files kalzium -f kalzium.lang
 %defattr(644,root,root,755)
@@ -858,6 +885,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %ghost %{_libdir}/libanalitza.so.?
 %attr(755,root,root) %{_libdir}/libanalitza.so.*.*.*
+%attr(755,root,root) %{_libdir}/libanalitzagui.so.?
+%attr(755,root,root) %{_libdir}/libanalitzagui.so.*.*.*  
 %attr(755,root,root) %{_bindir}/kalgebra
 %{_desktopdir}/kde4/kalgebra.desktop
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_kalgebra.so
@@ -886,7 +915,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/GpsdPositionProviderPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/GraticulePlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/OverviewMap.so
-%attr(755,root,root) %{_libdir}/kde4/plugins/marble/OsmAnnotatePlugin.so
+#%attr(755,root,root) %{_libdir}/kde4/plugins/marble/OsmAnnotatePlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/Photo.so
 #%attr(755,root,root) %{_libdir}/kde4/plugins/marble/QHttpNetworkPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/QNamNetworkPlugin.so
