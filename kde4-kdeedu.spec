@@ -13,8 +13,13 @@ Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	0ed77c40ad2b7fe30977e81f3e52ea35
 Patch0:		%{name}-findindi.patch
+BuildRequires:	Qt3Support-devel
+BuildRequires:	QtDesigner-devel
 BuildRequires:	QtOpenGL-devel
+BuildRequires:	QtSvg-devel
+BuildRequires:	QtTest-devel
 BuildRequires:	QtWebKit-devel
+BuildRequires:	automoc4
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
 BuildRequires:	eigen-devel >= 2.0.51
@@ -26,12 +31,17 @@ BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libindi-devel
 BuildRequires:	libnova-devel
 BuildRequires:	libqalculate-devel >= 0.9.5
+BuildRequires:	libxslt-devel
 BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
 BuildRequires:	openbabel-devel >= 2.2.0
+BuildRequires:	pkgconfig
 #BuildRequires:	python-PyKDE4
 BuildRequires:	python-sip-devel
+BuildRequires:	qt4-build
+BuildRequires:	qt4-qmake
 BuildRequires:	readline-devel
+BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	xplanet >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -631,9 +641,9 @@ rm -rf $RPM_BUILD_ROOT
 %files rocs -f rocs.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/rocs
-%{_datadir}/applications/kde4/rocs.desktop                                                                                   
+%{_desktopdir}/kde4/rocs.desktop
 %{_datadir}/apps/rocs
-%{_datadir}/config.kcfg/rocs.kcfg                                                                                            
+%{_datadir}/config.kcfg/rocs.kcfg
 %{_iconsdir}/hicolor/*x*/actions/rocs*.png
 %{_kdedocdir}/en/rocs
 
@@ -886,7 +896,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libanalitza.so.?
 %attr(755,root,root) %{_libdir}/libanalitza.so.*.*.*
 %attr(755,root,root) %{_libdir}/libanalitzagui.so.?
-%attr(755,root,root) %{_libdir}/libanalitzagui.so.*.*.*  
+%attr(755,root,root) %{_libdir}/libanalitzagui.so.*.*.*
 %attr(755,root,root) %{_bindir}/kalgebra
 %{_desktopdir}/kde4/kalgebra.desktop
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_kalgebra.so
