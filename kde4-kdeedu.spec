@@ -15,8 +15,13 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 # Source0-md5:	2dfdf596efcbc8464afce6a439f32878
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Patch0:		%{name}-findindi.patch
+BuildRequires:	Qt3Support-devel
+BuildRequires:	QtDesigner-devel
 BuildRequires:	QtOpenGL-devel
+BuildRequires:	QtSvg-devel
+BuildRequires:	QtTest-devel
 BuildRequires:	QtWebKit-devel
+BuildRequires:	automoc4
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
 BuildRequires:	eigen-devel >= 2.0.51
@@ -27,12 +32,18 @@ BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libindi-devel
 BuildRequires:	libnova-devel
+BuildRequires:	libqalculate-devel
+BuildRequires:	libxslt-devel
 BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
 BuildRequires:	openbabel-devel >= 2.2.0
+BuildRequires:	pkgconfig
 #BuildRequires:	python-PyKDE4
 BuildRequires:	python-sip-devel
+BuildRequires:	qt4-build
+BuildRequires:	qt4-qmake
 BuildRequires:	readline-devel
+BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.129
 #BuildRequires:	xplanet >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
