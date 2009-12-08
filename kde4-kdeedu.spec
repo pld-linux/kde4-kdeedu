@@ -16,6 +16,7 @@ Patch0:		%{name}-findindi.patch
 BuildRequires:	Qt3Support-devel
 BuildRequires:	QtDesigner-devel
 BuildRequires:	QtOpenGL-devel
+BuildRequires:	QtScriptTools-devel
 BuildRequires:	QtSvg-devel
 BuildRequires:	QtTest-devel
 BuildRequires:	QtWebKit-devel
