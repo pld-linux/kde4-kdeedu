@@ -6,12 +6,12 @@
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.3.90
+Version:	4.3.95
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	438077bf09f6f6e2843014f8ad2d027a
+# Source0-md5:	a56823ee38a417a151bb4c4a74d5ddd9
 Patch0:		%{name}-findindi.patch
 BuildRequires:	Qt3Support-devel
 BuildRequires:	QtDesigner-devel
@@ -612,7 +612,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/cantor_libs.kcfg
 %{_datadir}/config.kcfg/maximabackend.kcfg
 %{_datadir}/config.kcfg/sagebackend.kcfg
-%{_datadir}/config/cantor.knsrc
+%{_datadir}/config/cantor*.knsrc
 %{_iconsdir}/hicolor/16x16/apps/cantor.png
 %{_iconsdir}/hicolor/32x32/apps/cantor.png
 %{_iconsdir}/hicolor/48x48/apps/cantor.png
@@ -646,7 +646,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/rocs
 %{_datadir}/config.kcfg/rocs.kcfg
 %{_iconsdir}/hicolor/*x*/actions/rocs*.png
-%{_kdedocdir}/en/rocs
 
 %files kalzium -f kalzium.lang
 %defattr(644,root,root,755)
