@@ -441,6 +441,7 @@ MathML.
 Summary:	Geographical map for KDE
 Summary(pl.UTF-8):	Mapa geograficzna dla KDE
 Group:		X11/Libraries
+Requires:	python-PyKDE4 = %{version}
 
 %description marble
 Marble is a geographical map for KDE.
