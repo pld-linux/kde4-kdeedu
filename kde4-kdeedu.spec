@@ -13,6 +13,8 @@ Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	8f509d8cf2b8b9820fc3c802c2078c0a
 Patch0:		%{name}-findindi.patch
+Patch1:		%{name}-R.patch
+BuildRequires:	R
 BuildRequires:	Qt3Support-devel
 BuildRequires:	QtDesigner-devel
 BuildRequires:	QtOpenGL-devel
@@ -494,6 +496,7 @@ fizyka.
 %prep
 %setup -q -n %{orgname}-%{version}
 %patch0 -p0
+%patch1 -p0
 
 %build
 install -d build
@@ -585,6 +588,7 @@ rm -rf $RPM_BUILD_ROOT
 %files cantor -f cantor.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/cantor
+%attr(755,root,root) %{_bindir}/cantor_rserver
 %attr(755,root,root) %{_libdir}/kde4/cantor_creatematrixassistant.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_differentiateassistant.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_eigenvaluesassistant.so
@@ -596,6 +600,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/cantor_nullbackend.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_plot2dassistant.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_plot3dassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_rbackend.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_runscriptassistant.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_sagebackend.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_solveassistant.so
@@ -612,6 +617,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/cantor_libs.kcfg
 %{_datadir}/config.kcfg/maximabackend.kcfg
 %{_datadir}/config.kcfg/sagebackend.kcfg
+%{_datadir}/config.kcfg/rserver.kcfg
 %{_datadir}/config/cantor*.knsrc
 %{_iconsdir}/hicolor/16x16/apps/cantor.png
 %{_iconsdir}/hicolor/32x32/apps/cantor.png
@@ -632,6 +638,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/cantor/nullbackend.desktop
 %{_datadir}/kde4/services/cantor/plot2dassistant.desktop
 %{_datadir}/kde4/services/cantor/plot3dassistant.desktop
+%{_datadir}/kde4/services/cantor/rbackend.desktop
 %{_datadir}/kde4/services/cantor/runscriptassistant.desktop
 %{_datadir}/kde4/services/cantor/sagebackend.desktop
 %{_datadir}/kde4/services/cantor/solveassistant.desktop
