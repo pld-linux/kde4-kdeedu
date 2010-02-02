@@ -39,7 +39,7 @@ BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
 BuildRequires:	openbabel-devel >= 2.2.0
 BuildRequires:	pkgconfig
-BuildRequires:	python-PyKDE4 >= %{qtver}
+BuildRequires:	python-PyKDE4 >= %{version}
 BuildRequires:	python-PyQt4-devel >= 4.7
 BuildRequires:	python-sip-devel
 BuildRequires:	qt4-build >= %{qtver}
