@@ -2,7 +2,6 @@
 %define		_state		unstable
 %define		orgname		kdeedu
 %define		qtver		4.6.0
-%define		snap		svn1040395
 
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
