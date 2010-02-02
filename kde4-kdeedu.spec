@@ -1,6 +1,7 @@
 
 %define		_state		unstable
 %define		orgname		kdeedu
+%define		qtver		4.6.0
 %define		snap		svn1040395
 
 Summary:	K Desktop Environment - edutainment
@@ -15,13 +16,13 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 Patch0:		%{name}-findindi.patch
 Patch1:		%{name}-R.patch
 BuildRequires:	R
-BuildRequires:	Qt3Support-devel
-BuildRequires:	QtDesigner-devel
-BuildRequires:	QtOpenGL-devel
-BuildRequires:	QtScriptTools-devel
-BuildRequires:	QtSvg-devel
-BuildRequires:	QtTest-devel
-BuildRequires:	QtWebKit-devel
+BuildRequires:	Qt3Support-devel >= %{qtver}
+BuildRequires:	QtDesigner-devel >= %{qtver}
+BuildRequires:	QtOpenGL-devel >= %{qtver}
+BuildRequires:	QtScriptTools-devel >= %{qtver}
+BuildRequires:	QtSvg-devel >= %{qtver}
+BuildRequires:	QtTest-devel >= %{qtver}
+BuildRequires:	QtWebKit-devel >= %{qtver}
 BuildRequires:	automoc4
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
@@ -41,8 +42,8 @@ BuildRequires:	openbabel-devel >= 2.2.0
 BuildRequires:	pkgconfig
 #BuildRequires:	python-PyKDE4
 BuildRequires:	python-sip-devel
-BuildRequires:	qt4-build
-BuildRequires:	qt4-qmake
+BuildRequires:	qt4-build >= %{qtver}
+BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	readline-devel
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.129
