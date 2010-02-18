@@ -1,26 +1,27 @@
-# TODO:
-# - dep not recognized: libindi-devel - http://indi.sf.net
 
 %define		_state		stable
 %define		orgname		kdeedu
+%define		qtver		4.6.1
 
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.3.5
+Version:	4.4.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	5755742477a9db101c03269393ee36ad
-#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+# Source0-md5:	ce6a1b694e881f12553b2409504b8694
 Patch0:		%{name}-findindi.patch
-BuildRequires:	Qt3Support-devel
-BuildRequires:	QtDesigner-devel
-BuildRequires:	QtOpenGL-devel
-BuildRequires:	QtSvg-devel
-BuildRequires:	QtTest-devel
-BuildRequires:	QtWebKit-devel
+Patch1:		%{name}-R.patch
+BuildRequires:	R
+BuildRequires:	Qt3Support-devel >= %{qtver}
+BuildRequires:	QtDesigner-devel >= %{qtver}
+BuildRequires:	QtOpenGL-devel >= %{qtver}
+BuildRequires:	QtScriptTools-devel >= %{qtver}
+BuildRequires:	QtSvg-devel >= %{qtver}
+BuildRequires:	QtTest-devel >= %{qtver}
+BuildRequires:	QtWebKit-devel >= %{qtver}
 BuildRequires:	automoc4
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
@@ -32,20 +33,21 @@ BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libindi-devel
 BuildRequires:	libnova-devel
-BuildRequires:	libqalculate-devel
+BuildRequires:	libqalculate-devel >= 0.9.5
 BuildRequires:	libxslt-devel
 BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
 BuildRequires:	openbabel-devel >= 2.2.0
 BuildRequires:	pkgconfig
-#BuildRequires:	python-PyKDE4
+BuildRequires:	python-PyKDE4 >= %{version}
+BuildRequires:	python-PyQt4-devel >= 4.7
 BuildRequires:	python-sip-devel
-BuildRequires:	qt4-build
-BuildRequires:	qt4-qmake
+BuildRequires:	qt4-build >= %{qtver}
+BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	readline-devel
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.129
-#BuildRequires:	xplanet >= 1.0
+BuildRequires:	xplanet >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -58,6 +60,7 @@ K Desktop Environment - edukacja i rozrywka.
 Summary:	Header files for kdeedu libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek kdeedu
 Group:		X11/Development/Libraries
+Requires:	%{name}-libkdeeducore = %{version}-%{release}
 Requires:	%{name}-marble = %{version}-%{release}
 
 %description devel
@@ -76,6 +79,28 @@ KDE version of the well-known game Simon Says.
 
 %description blinken -l pl.UTF-8
 Wersja KDE dobrze znanej gry "Simon Says".
+
+%package cantor
+Summary:	Cantor
+Summary(pl.UTF-8):	Cantor
+Group:		X11/Applications/Science
+
+%description cantor
+Cantor.
+
+%description cantor -l pl.UTF-8
+Cantor.
+
+%package rocs
+Summary:	Rocs Graph Theory
+Summary(pl.UTF-8):	Rocs - Teoria Wykresów
+Group:		X11/Applications/Science
+
+%description rocs
+Graph Theory Tool for Professors and Students.
+
+%description rocs -l pl.UTF-8
+Teoria wykresów dla profesorów oraz studentów.
 
 %package kalzium
 Summary:	A Periodic System of Elements database
@@ -419,6 +444,7 @@ MathML.
 Summary:	Geographical map for KDE
 Summary(pl.UTF-8):	Mapa geograficzna dla KDE
 Group:		X11/Libraries
+Requires:	python-PyKDE4 = %{version}
 
 %description marble
 Marble is a geographical map for KDE.
@@ -471,6 +497,7 @@ fizyka.
 %prep
 %setup -q -n %{orgname}-%{version}
 %patch0 -p0
+%patch1 -p0
 
 %build
 install -d build
@@ -483,6 +510,7 @@ cd build
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif
+	-DEXPERIMENTAL_PYTHON_BINDINGS=TRUE \
 	../
 
 %{__make}
@@ -495,6 +523,7 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir}
 
 %find_lang blinken	--with-kde
+%find_lang cantor	--with-kde
 %find_lang kalgebra	--with-kde
 %find_lang kalzium	--with-kde
 %find_lang kanagram	--with-kde
@@ -512,6 +541,7 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang kwordquiz	--with-kde
 %find_lang marble	--with-kde
 %find_lang parley	--with-kde
+%find_lang rocs		--with-kde
 %find_lang step		--with-kde
 
 %post marble -p /sbin/ldconfig
@@ -532,7 +562,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libSatLib.so
+%attr(755,root,root) %{_libdir}/libkeduvocdocument.so
+%attr(755,root,root) %{_libdir}/libscience.so
+%attr(755,root,root) %{_libdir}/libkdeeduui.so
 %attr(755,root,root) %{_libdir}/libanalitza.so
+%attr(755,root,root) %{_libdir}/libanalitzagui.so
 %attr(755,root,root) %{_libdir}/libavogadro-kalzium.so
 %attr(755,root,root) %{_libdir}/libkiten.so
 %attr(755,root,root) %{_libdir}/libmarblewidget.so
@@ -551,18 +586,89 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/blinken.svgz
 %{_iconsdir}/hicolor/*x*/apps/blinken.png
 
+%files cantor -f cantor.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/cantor
+%attr(755,root,root) %{_bindir}/cantor_rserver
+%attr(755,root,root) %{_libdir}/kde4/cantor_creatematrixassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_differentiateassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_eigenvaluesassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_eigenvectorsassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_integrateassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_invertmatrixassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_kalgebrabackend.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_maximabackend.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_nullbackend.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_plot2dassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_plot3dassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_rbackend.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_runscriptassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_sagebackend.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_solveassistant.so
+%attr(755,root,root) %{_libdir}/kde4/libcantorpart.so
+%attr(755,root,root) %{_libdir}/libcantorlibs.so
+%attr(755,root,root) %{_libdir}/libcantorlibs.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libcantorlibs.so.?
+%attr(755,root,root) %{_libdir}/libcantor_config.so
+%{_desktopdir}/kde4/cantor.desktop
+%{_desktopdir}/kde4/cantor_part.desktop
+%{_datadir}/apps/cantor
+%{_datadir}/apps/cantorpart
+%{_datadir}/config.kcfg/cantor.kcfg
+%{_datadir}/config.kcfg/cantor_libs.kcfg
+%{_datadir}/config.kcfg/maximabackend.kcfg
+%{_datadir}/config.kcfg/sagebackend.kcfg
+%{_datadir}/config.kcfg/rserver.kcfg
+%{_datadir}/config/cantor*.knsrc
+%{_iconsdir}/hicolor/16x16/apps/cantor.png
+%{_iconsdir}/hicolor/32x32/apps/cantor.png
+%{_iconsdir}/hicolor/48x48/apps/cantor.png
+%{_iconsdir}/hicolor/48x48/apps/maximabackend.png
+%{_iconsdir}/hicolor/48x48/apps/rbackend.png
+%{_iconsdir}/hicolor/48x48/apps/sagebackend.png
+%{_iconsdir}/oxygen/22x22/actions/pointer.png
+%dir %{_datadir}/kde4/services/cantor
+%{_datadir}/kde4/services/cantor/creatematrixassistant.desktop
+%{_datadir}/kde4/services/cantor/differentiateassistant.desktop
+%{_datadir}/kde4/services/cantor/eigenvaluesassistant.desktop
+%{_datadir}/kde4/services/cantor/eigenvectorsassistant.desktop
+%{_datadir}/kde4/services/cantor/integrateassistant.desktop
+%{_datadir}/kde4/services/cantor/invertmatrixassistant.desktop
+%{_datadir}/kde4/services/cantor/kalgebrabackend.desktop
+%{_datadir}/kde4/services/cantor/maximabackend.desktop
+%{_datadir}/kde4/services/cantor/nullbackend.desktop
+%{_datadir}/kde4/services/cantor/plot2dassistant.desktop
+%{_datadir}/kde4/services/cantor/plot3dassistant.desktop
+%{_datadir}/kde4/services/cantor/rbackend.desktop
+%{_datadir}/kde4/services/cantor/runscriptassistant.desktop
+%{_datadir}/kde4/services/cantor/sagebackend.desktop
+%{_datadir}/kde4/services/cantor/solveassistant.desktop
+%{_datadir}/kde4/servicetypes/cantor_assistant.desktop
+%{_datadir}/kde4/servicetypes/cantor_backend.desktop
+#%{_kdedocdir}/en/cantor
+
+%files rocs -f rocs.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/rocs
+%{_desktopdir}/kde4/rocs.desktop
+%{_datadir}/apps/rocs
+%{_datadir}/config.kcfg/rocs.kcfg
+%{_iconsdir}/hicolor/*x*/actions/rocs*.png
+
 %files kalzium -f kalzium.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kalzium
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_didyouknow.so
+%attr(755,root,root) %{_libdir}/kde4/concentrationCalculator.so
+%attr(755,root,root) %{_libdir}/kde4/gasCalculator.so
+%attr(755,root,root) %{_libdir}/kde4/nuclearCalculator.so
 
 %attr(755,root,root) %ghost %{_libdir}/libavogadro-kalzium.so.?
 %attr(755,root,root) %{_libdir}/libavogadro-kalzium.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libcompoundviewer.so.?
 %attr(755,root,root) %{_libdir}/libcompoundviewer.so.*.*.*
 
-%dir %{_libdir}/avogadro-kalzium/engines
 %dir %{_libdir}/avogadro-kalzium/
 %dir %{_libdir}/avogadro-kalzium/colors
 %attr(755,root,root) %{_libdir}/avogadro-kalzium/colors/libchargecolor.so
@@ -608,6 +714,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/kalzium.kcfg
 %{_datadir}/kde4/services/plasma-dataengine-kalzium.desktop
 %{_datadir}/kde4/services/plasma_didyouknow.desktop
+%{_datadir}/kde4/services/concentrationCalculator.desktop
+%{_datadir}/kde4/services/gasCalculator.desktop
+%{_datadir}/kde4/services/nuclearCalculator.desktop
 %{_desktopdir}/kde4/kalzium.desktop
 %{_iconsdir}/hicolor/scalable/apps/kalzium.svgz
 %{_iconsdir}/hicolor/*x*/apps/kalzium.png
@@ -722,7 +831,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kstars -f kstars.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libSatLib.so
 %attr(755,root,root) %{_libdir}/libhtmesh.a
 #%attr(755,root,root) %{_libdir}/libsbigudrv.so
 #%attr(755,root,root) %{_bindir}/indiserver
@@ -779,25 +887,24 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libkdeeducore
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkeduvocdocument.so
-%attr(755,root,root) %{_libdir}/libscience.so
 %{_datadir}/apps/libkdeedu
-%attr(755,root,root) %{_libdir}/libkdeeduui.so
-%attr(755,root,root) %{_libdir}/libSatLib.so.4
-%attr(755,root,root) %{_libdir}/libSatLib.so.4.3.0
-%attr(755,root,root) %{_libdir}/libkdeeduui.so.4
-%attr(755,root,root) %{_libdir}/libkdeeduui.so.4.3.0
-%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4
-%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.4.3.0
+%attr(755,root,root) %ghost %{_libdir}/libSatLib.so.?
+%attr(755,root,root) %{_libdir}/libSatLib.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkdeeduui.so.?
+%attr(755,root,root) %{_libdir}/libkdeeduui.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkeduvocdocument.so.?
+%attr(755,root,root) %{_libdir}/libkeduvocdocument.so.*.*.*
 #%attr(755,root,root) %{_libdir}/libsbigudrv.so.1
 #%attr(755,root,root) %{_libdir}/libsbigudrv.so.1.0.0
-%attr(755,root,root) %{_libdir}/libscience.so.4
-%attr(755,root,root) %{_libdir}/libscience.so.4.3.0
+%attr(755,root,root) %ghost %{_libdir}/libscience.so.?
+%attr(755,root,root) %{_libdir}/libscience.so.*.*.*
 
 %files kalgebra -f kalgebra.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %ghost %{_libdir}/libanalitza.so.?
 %attr(755,root,root) %{_libdir}/libanalitza.so.*.*.*
+%attr(755,root,root) %{_libdir}/libanalitzagui.so.?
+%attr(755,root,root) %{_libdir}/libanalitzagui.so.*.*.*
 %attr(755,root,root) %{_bindir}/kalgebra
 %{_desktopdir}/kde4/kalgebra.desktop
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_kalgebra.so
@@ -826,10 +933,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/GpsdPositionProviderPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/GraticulePlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/OverviewMap.so
+#%attr(755,root,root) %{_libdir}/kde4/plugins/marble/OsmAnnotatePlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/Photo.so
 #%attr(755,root,root) %{_libdir}/kde4/plugins/marble/QHttpNetworkPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/QNamNetworkPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/StarsPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/Weather.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/Wikipedia.so
 
 %dir %{_datadir}/apps/marble_part
@@ -840,6 +949,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/plasma-applet-kworldclock.desktop
 %{_desktopdir}/kde4/marble.desktop
 %{_iconsdir}/hicolor/*x*/apps/marble.png
+%{py_sitedir}/PyKDE4/marble.so
 
 %files parley -f parley.lang
 %defattr(644,root,root,755)
