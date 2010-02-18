@@ -14,14 +14,16 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 # Source0-md5:	ce6a1b694e881f12553b2409504b8694
 Patch0:		%{name}-findindi.patch
 Patch1:		%{name}-R.patch
-BuildRequires:	R
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtDesigner-devel >= %{qtver}
 BuildRequires:	QtOpenGL-devel >= %{qtver}
 BuildRequires:	QtScriptTools-devel >= %{qtver}
 BuildRequires:	QtSvg-devel >= %{qtver}
 BuildRequires:	QtTest-devel >= %{qtver}
+BuildRequires:	QtUiTools-devel >= %{qtver}
 BuildRequires:	QtWebKit-devel >= %{qtver}
+BuildRequires:	R
+BuildRequires:	attica-devel
 BuildRequires:	automoc4
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
@@ -34,6 +36,7 @@ BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libindi-devel
 BuildRequires:	libnova-devel
 BuildRequires:	libqalculate-devel >= 0.9.5
+BuildRequires:	libspectre-devel
 BuildRequires:	libxslt-devel
 BuildRequires:	ocaml
 BuildRequires:	ocaml-facile
