@@ -27,7 +27,7 @@ BuildRequires:	attica-devel
 BuildRequires:	automoc4
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
-BuildRequires:	eigen-devel >= 2.0.51
+BuildRequires:	eigen-devel >= 1:2.0.12
 BuildRequires:	gmm-devel
 BuildRequires:	gpsd-devel
 BuildRequires:	gsl-devel >= 1.8
