@@ -1,0 +1,11 @@
+--- kmplot/kmplot/kmplot.desktop.orig	2010-04-11 14:16:19.698377132 +0200
++++ kmplot/kmplot/kmplot.desktop	2010-04-11 14:16:37.650201585 +0200
+@@ -132,7 +132,7 @@
+ Name[x-test]=xxKmPlotxx
+ Name[zh_CN]=KmPlot
+ Name[zh_TW]=KmPlot
+-Categories=Qt;KDE;Education;Math;
++Categories=Qt;KDE;Education;Science;Math;
+ MimeType=application/x-kmplot;
+ GenericName=Mathematical Function Plotter
+ GenericName[be]=Маляванне графікаў матэматычных функцый
