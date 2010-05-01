@@ -6,12 +6,12 @@
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.4.2
-Release:	2
+Version:	4.4.3
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	69b9e54f4bd59c5816600c3d2828878b
+# Source0-md5:	6afd15d2d4c912cb5e2ca94c8a2bf5f4
 Patch0:		%{name}-findindi.patch
 Patch1:		%{name}-R.patch
 Patch2:		%{name}-categories.patch
@@ -616,7 +616,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libcantorlibs.so.?
 %attr(755,root,root) %{_libdir}/libcantor_config.so
 %{_desktopdir}/kde4/cantor.desktop
-%{_desktopdir}/kde4/cantor_part.desktop
 %{_datadir}/apps/cantor
 %{_datadir}/apps/cantorpart
 %{_datadir}/config.kcfg/cantor.kcfg
@@ -633,6 +632,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/48x48/apps/sagebackend.png
 %{_iconsdir}/oxygen/22x22/actions/pointer.png
 %dir %{_datadir}/kde4/services/cantor
+%{_datadir}/kde4/services/cantor/cantor_part.desktop
 %{_datadir}/kde4/services/cantor/creatematrixassistant.desktop
 %{_datadir}/kde4/services/cantor/differentiateassistant.desktop
 %{_datadir}/kde4/services/cantor/eigenvaluesassistant.desktop
