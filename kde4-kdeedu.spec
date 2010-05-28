@@ -34,7 +34,7 @@ BuildRequires:	gpsd-devel
 BuildRequires:	gsl-devel >= 1.8
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
-BuildRequires:	libindi-devel
+BuildRequires:	libindi-devel >= 0.6.1
 BuildRequires:	libnova-devel
 BuildRequires:	libqalculate-devel >= 0.9.5
 BuildRequires:	libspectre-devel
