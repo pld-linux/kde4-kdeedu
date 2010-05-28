@@ -1,17 +1,17 @@
 
-%define		_state		stable
+%define		_state		unstable
 %define		orgname		kdeedu
 %define		qtver		4.6.2
 
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.4.3
+Version:	4.4.80
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	6afd15d2d4c912cb5e2ca94c8a2bf5f4
+# Source0-md5:	a64e008d89b3b3ac9c176e922a9d23ed
 Patch0:		%{name}-findindi.patch
 Patch1:		%{name}-R.patch
 Patch2:		%{name}-categories.patch
@@ -24,7 +24,7 @@ BuildRequires:	QtTest-devel >= %{qtver}
 BuildRequires:	QtUiTools-devel >= %{qtver}
 BuildRequires:	QtWebKit-devel >= %{qtver}
 BuildRequires:	R
-BuildRequires:	attica-devel
+BuildRequires:	attica-devel >= 0.1.4
 BuildRequires:	automoc4
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
