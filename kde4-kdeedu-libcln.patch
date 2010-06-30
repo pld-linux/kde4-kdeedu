@@ -1,0 +1,10 @@
+--- kstars/kstars/CMakeLists.txt.orig	2010-06-30 21:56:04.342617380 +0200
++++ kstars/kstars/CMakeLists.txt	2010-06-30 21:56:58.045735274 +0200
+@@ -352,6 +352,7 @@
+ 	SatLib
+ 	htmesh
+ 	${ZLIB_LIBRARIES}
++	cln
+         )
+ 
+ if(NOT WIN32)
