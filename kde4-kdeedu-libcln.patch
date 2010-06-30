@@ -1,10 +1,12 @@
---- kstars/kstars/CMakeLists.txt.orig	2010-06-30 21:56:04.342617380 +0200
-+++ kstars/kstars/CMakeLists.txt	2010-06-30 21:56:58.045735274 +0200
-@@ -352,6 +352,7 @@
- 	SatLib
- 	htmesh
- 	${ZLIB_LIBRARIES}
-+	cln
-         )
+--- step/step/CMakeLists.txt.orig	2010-07-01 00:32:30.880150862 +0200
++++ step/step/CMakeLists.txt	2010-07-01 00:32:49.042969843 +0200
+@@ -67,7 +67,8 @@
+     ${KDE4_KHTML_LIBS}
+     ${KDE4_KNEWSTUFF2_LIBS}
+     ${QT_QTOPENGL_LIBRARY}
+-    ${qalculate_LIBS})
++    ${qalculate_LIBS}
++    cln)
  
- if(NOT WIN32)
+ install(TARGETS step ${INSTALL_TARGETS_DEFAULT_ARGS})
+ install(FILES step.kcfg DESTINATION  ${KCFG_INSTALL_DIR})
