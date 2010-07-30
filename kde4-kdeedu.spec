@@ -27,6 +27,7 @@ BuildRequires:	QtWebKit-devel >= %{qtver}
 BuildRequires:	R
 BuildRequires:	attica-devel
 BuildRequires:	automoc4
+BuildRequires:	avogadro-devel
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
 BuildRequires:	eigen >= 1:2.0.12-3
