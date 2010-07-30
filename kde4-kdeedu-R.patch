@@ -1,11 +1,11 @@
---- cmake/modules/FindR.cmake.orig	2010-02-01 12:35:52.434303194 +0100
-+++ cmake/modules/FindR.cmake	2010-02-01 12:36:39.665039919 +0100
-@@ -57,7 +57,7 @@
+--- cmake/modules/FindR.cmake~	2010-06-08 12:10:20.000000000 +0200
++++ cmake/modules/FindR.cmake	2010-07-30 22:26:30.990748100 +0200
+@@ -46,7 +46,7 @@
  
- FIND_LIBRARY(LIBR_SO
- 	R
--	PATHS ${R_HOME}/lib ${R_SHAREDLIBDIR} ${R_HOME}/bin
-+	PATHS /usr/lib /usr/lib64 ${R_HOME}/lib ${R_SHAREDLIBDIR} ${R_HOME}/bin
- 	NO_DEFAULT_PATH)
- IF(NOT LIBR_SO)
- 	MESSAGE(STATUS "libR not found. Make sure the location of R was detected correctly, above, and R was compiled with the --enable-shlib option")
+   FIND_LIBRARY(R_R_LIBRARY
+     R
+-    HINTS ${R_HOME}/lib ${R_SHARED_LIB_DIR} ${R_HOME}/bin )
++    HINTS /usr/lib /usr/lib64 ${R_HOME}/lib ${R_SHARED_LIB_DIR} ${R_HOME}/bin )
+   IF(NOT R_R_LIBRARY)
+     MESSAGE(STATUS "libR not found. Make sure the location of R was detected correctly, above, and R was compiled with the --enable-shlib option")
+   ELSE(NOT R_R_LIBRARY)
