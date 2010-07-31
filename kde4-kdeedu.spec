@@ -576,13 +576,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkdeeduui.so
 %attr(755,root,root) %{_libdir}/libanalitza.so
 %attr(755,root,root) %{_libdir}/libanalitzagui.so
-%attr(755,root,root) %{_libdir}/libavogadro-kalzium.so
 %attr(755,root,root) %{_libdir}/libkiten.so
 %attr(755,root,root) %{_libdir}/libmarblewidget.so
 %attr(755,root,root) %{_libdir}/libcompoundviewer.so
+%attr(755,root,root) %{_libdir}/librocslib.so
 %{_includedir}/libkdeedu
 %{_includedir}/libkiten
 %{_includedir}/marble
+%{_includedir}/rocs
 %{_datadir}/apps/cmake/modules/*.cmake
 
 %files blinken -f blinken.lang
@@ -662,6 +663,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/rocs
 %{_datadir}/config.kcfg/rocs.kcfg
 %{_iconsdir}/hicolor/*x*/actions/rocs*.png
+%{_datadir}/kde4/services/rocs_makecompleteplugin.desktop
+%{_datadir}/kde4/services/rocs_plaintxtplugin.desktop
+%{_datadir}/kde4/servicetypes/RocsFilePlugin.desktop
+%{_datadir}/kde4/servicetypes/RocsToolsPlugin.desktop
+
+%attr(755,root,root) %{_libdir}/kde4/rocs_makecompleteplugin.so
+%attr(755,root,root) %{_libdir}/kde4/rocs_plaintxt.so
+%attr(755,root,root) %{_libdir}/librocslib.so.?
+%attr(755,root,root) %{_libdir}/librocslib.so.*.*.*
 
 %files kalzium -f kalzium.lang
 %defattr(644,root,root,755)
@@ -672,49 +682,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/gasCalculator.so
 %attr(755,root,root) %{_libdir}/kde4/nuclearCalculator.so
 
-%attr(755,root,root) %ghost %{_libdir}/libavogadro-kalzium.so.?
-%attr(755,root,root) %{_libdir}/libavogadro-kalzium.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libcompoundviewer.so.?
 %attr(755,root,root) %{_libdir}/libcompoundviewer.so.*.*.*
-
-%dir %{_libdir}/avogadro-kalzium/
-%dir %{_libdir}/avogadro-kalzium/colors
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/colors/libchargecolor.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/colors/libdistancecolor.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/colors/libindexcolor.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/colors/libresiduecolor.so
-
-%dir %{_libdir}/avogadro-kalzium/engines
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libaxesengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libcartoonengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libdipoleengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libforceengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libhbondengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liblabelengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liborbitalengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/liboverlayengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libpolygonengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libribbonengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libringengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libsimplewireengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libsphereengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libstickengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libsurfaceengine.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/engines/libwireengine.so
-
-%dir %{_libdir}/avogadro-kalzium/tools
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libaligntool.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libautoopttool.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libautorotatetool.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libbondcentrictool.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libclickmeasuretool.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libdrawtool.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libmanipulatetool.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libnavigatetool.so
-%attr(755,root,root) %{_libdir}/avogadro-kalzium/tools/libselectrotatetool.so
-
-# XXX: ugly dir deps? -> devel?
-%attr(755,root,root) %{_libdir}/kde4/plugins/designer/kalziumuiwidgets.so
 
 %{_datadir}/apps/desktoptheme/default/widgets/chalkboard.svg
 %{_datadir}/apps/kalzium
@@ -883,6 +852,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kturtle
 %{_iconsdir}/hicolor/*x*/apps/kturtle.png
 %{_iconsdir}/hicolor/scalable/apps/kturtle.svgz
+%{_datadir}/config/kturtle.knsrc
 
 %files kwordquiz -f kwordquiz.lang
 %defattr(644,root,root,755)
@@ -918,6 +888,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_kalgebra.so
 %{_datadir}/kde4/services/kalgebraplasmoid.desktop
 %{_iconsdir}/hicolor/*x*/apps/kalgebra.png
+%{_datadir}/apps/katepart/syntax/kalgebra.xml
 %attr(755,root,root) %{_bindir}/calgebra
 
 %files marble -f marble.lang
@@ -926,13 +897,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/marble
 %attr(755,root,root) %{_bindir}/tilecreator
 
-%attr(755,root,root) %ghost %{_libdir}/libmarblewidget.so.4
+%attr(755,root,root) %ghost %{_libdir}/libmarblewidget.so.10
 %attr(755,root,root) %{_libdir}/libmarblewidget.so.*.*.*
 
 %attr(755,root,root) %{_libdir}/kde4/libmarble_part.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_worldclock.so
 
 %dir %{_libdir}/kde4/plugins/marble
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/AprsPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/CompassFloatItem.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/MapScaleFloatItem.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/NavigationFloatItem.so
@@ -941,9 +913,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/GpsdPositionProviderPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/GraticulePlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/OverviewMap.so
-#%attr(755,root,root) %{_libdir}/kde4/plugins/marble/OsmAnnotatePlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/Photo.so
-#%attr(755,root,root) %{_libdir}/kde4/plugins/marble/QHttpNetworkPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/ProgressFloatItem.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/QNamNetworkPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/StarsPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/Weather.so
@@ -978,6 +949,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/desktoptheme/default/widgets/parley_plasma_card.svg
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_parley.so
 %{_datadir}/kde4/services/plasma-dataengine-parley.desktop
+%{_datadir}/config/parley-themes.knsrc
 
 %files step -f step.lang
 %defattr(644,root,root,755)
