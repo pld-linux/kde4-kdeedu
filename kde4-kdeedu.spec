@@ -1,17 +1,17 @@
 
 %define		_state		stable
 %define		orgname		kdeedu
-%define		qtver		4.6.3
+%define		qtver		4.7.0
 
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.5.1
+Version:	4.5.2
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	43c31e897b8ec759876c15adba5e0a12
+# Source0-md5:	65ff4441860ffc8442dac7a2d3d88e31
 Patch0:		%{name}-findindi.patch
 Patch1:		%{name}-R.patch
 Patch2:		%{name}-categories.patch
@@ -634,7 +634,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/48x48/apps/maximabackend.png
 %{_iconsdir}/hicolor/48x48/apps/rbackend.png
 %{_iconsdir}/hicolor/48x48/apps/sagebackend.png
-%{_iconsdir}/oxygen/22x22/actions/pointer.png
 %dir %{_datadir}/kde4/services/cantor
 %{_datadir}/kde4/services/cantor/cantor_part.desktop
 %{_datadir}/kde4/services/cantor/creatematrixassistant.desktop
@@ -959,6 +958,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config/step.knsrc
 %{_desktopdir}/kde4/step.desktop
 %{_iconsdir}/hicolor/*/apps/step.png
-# already in oxygen icons
-#%{_iconsdir}/oxygen/*/actions/pointer.png
-%{_iconsdir}/oxygen/*/actions/step_*.png
