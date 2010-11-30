@@ -7,11 +7,11 @@ Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
 Version:	4.5.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	f5273c2c9684e49cc263bed50d696010
+# Source0-md5:	98d103d11db320a36cdf8e44afbeda71
 Patch0:		%{name}-findindi.patch
 Patch1:		%{name}-R.patch
 Patch2:		%{name}-categories.patch
