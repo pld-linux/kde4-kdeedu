@@ -6,26 +6,19 @@
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.5.5
+Version:	4.6.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	42859a1c8568dfeeb164fdce01720a7e
+# Source0-md5:	910301da580fb30c2d7fbb5b22b9a08c
 Patch0:		%{name}-findindi.patch
 Patch1:		%{name}-R.patch
 Patch2:		%{name}-categories.patch
 Patch3:		%{name}-libcln.patch
-BuildRequires:	Qt3Support-devel >= %{qtver}
-BuildRequires:	QtDesigner-devel >= %{qtver}
-BuildRequires:	QtOpenGL-devel >= %{qtver}
 BuildRequires:	QtScriptTools-devel >= %{qtver}
-BuildRequires:	QtSvg-devel >= %{qtver}
-BuildRequires:	QtTest-devel >= %{qtver}
-BuildRequires:	QtUiTools-devel >= %{qtver}
-BuildRequires:	QtWebKit-devel >= %{qtver}
 BuildRequires:	R
-BuildRequires:	attica-devel
+BuildRequires:	attica-devel >= 0.2.0
 BuildRequires:	automoc4
 BuildRequires:	avogadro-devel
 BuildRequires:	boost-python-devel
@@ -607,6 +600,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/cantor_runscriptassistant.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_sagebackend.so
 %attr(755,root,root) %{_libdir}/kde4/cantor_solveassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_advancedplotassistant.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_helppanelplugin.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_octavebackend.so
+%attr(755,root,root) %{_libdir}/kde4/cantor_variablemanagerplugin.so
 %attr(755,root,root) %{_libdir}/kde4/libcantorpart.so
 %attr(755,root,root) %{_libdir}/libcantorlibs.so
 %attr(755,root,root) %{_libdir}/libcantorlibs.so.*.*.*
@@ -647,6 +644,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/servicetypes/cantor_assistant.desktop
 %{_datadir}/kde4/servicetypes/cantor_backend.desktop
 #%{_kdedocdir}/en/cantor
+%{_datadir}/kde4/services/cantor/advancedplotassistant.desktop
+%{_datadir}/kde4/services/cantor/helppanelplugin.desktop
+%{_datadir}/kde4/services/cantor/octavebackend.desktop
+%{_datadir}/kde4/services/cantor/variablemanagerplugin.desktop
+%{_datadir}/kde4/servicetypes/cantor_panelplugin.desktop
+%{_datadir}/config.kcfg/octavebackend.kcfg
 
 %files rocs -f rocs.lang
 %defattr(644,root,root,755)
@@ -654,14 +657,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/rocs.desktop
 %{_datadir}/apps/rocs
 %{_datadir}/config.kcfg/rocs.kcfg
-%{_iconsdir}/hicolor/*x*/actions/rocs*.png
+#%{_iconsdir}/hicolor/*x*/actions/rocs*.png
 %{_datadir}/kde4/services/rocs_makecompleteplugin.desktop
 %{_datadir}/kde4/services/rocs_plaintxtplugin.desktop
 %{_datadir}/kde4/servicetypes/RocsFilePlugin.desktop
 %{_datadir}/kde4/servicetypes/RocsToolsPlugin.desktop
+%{_datadir}/kde4/services/rocs_GraphStructure.desktop
+%{_datadir}/kde4/services/rocs_ListStructure.desktop
+%{_datadir}/kde4/services/rocs_kmlParser.desktop
+%{_datadir}/kde4/servicetypes/RocsDSPlugin.desktop
+%{_datadir}/config/rocs.knsrc
 
 %attr(755,root,root) %{_libdir}/kde4/rocs_makecompleteplugin.so
 %attr(755,root,root) %{_libdir}/kde4/rocs_plaintxt.so
+%attr(755,root,root) %{_libdir}/kde4/rocs_GraphStructure.so
+%attr(755,root,root) %{_libdir}/kde4/rocs_ListStructure.so
+%attr(755,root,root) %{_libdir}/kde4/rocs_kmlParser.so
 %attr(755,root,root) %{_libdir}/librocslib.so.?
 %attr(755,root,root) %{_libdir}/librocslib.so.*.*.*
 
@@ -670,6 +681,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kalzium
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kalzium.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_didyouknow.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_applet_molmassCalculator.so
 %attr(755,root,root) %{_libdir}/kde4/concentrationCalculator.so
 %attr(755,root,root) %{_libdir}/kde4/gasCalculator.so
 %attr(755,root,root) %{_libdir}/kde4/nuclearCalculator.so
@@ -686,6 +698,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/concentrationCalculator.desktop
 %{_datadir}/kde4/services/gasCalculator.desktop
 %{_datadir}/kde4/services/nuclearCalculator.desktop
+%{_datadir}/kde4/services/plasma-applet-Molmasscalculator.desktop
 %{_desktopdir}/kde4/kalzium.desktop
 %{_iconsdir}/hicolor/scalable/apps/kalzium.svgz
 %{_iconsdir}/hicolor/*x*/apps/kalzium.png
@@ -876,20 +889,29 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libanalitzagui.so.?
 %attr(755,root,root) %{_libdir}/libanalitzagui.so.*.*.*
 %attr(755,root,root) %{_bindir}/kalgebra
+%attr(755,root,root) %{_bindir}/kalgebramobile
 %{_desktopdir}/kde4/kalgebra.desktop
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_kalgebra.so
 %{_datadir}/kde4/services/kalgebraplasmoid.desktop
 %{_iconsdir}/hicolor/*x*/apps/kalgebra.png
 %{_datadir}/apps/katepart/syntax/kalgebra.xml
 %attr(755,root,root) %{_bindir}/calgebra
+%{_datadir}/kde4/services/kalgebraconsole.desktop
+%{_datadir}/kde4/services/kalgebraplot2d.desktop
+%{_datadir}/kde4/services/kalgebratables.desktop
+%{_datadir}/kde4/services/kalgebravariables.desktop
+%{_datadir}/kde4/servicetypes/kalgebrascript.desktop
+%{_desktopdir}/kde4/kalgebramobile.desktop
+%{_datadir}/apps/kalgebra/scripts
 
 %files marble -f marble.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/geodatatest
 %attr(755,root,root) %{_bindir}/marble
 %attr(755,root,root) %{_bindir}/tilecreator
+%attr(755,root,root) %{_bindir}/routing-instructions
 
-%attr(755,root,root) %ghost %{_libdir}/libmarblewidget.so.10
+%attr(755,root,root) %ghost %{_libdir}/libmarblewidget.so.11
 %attr(755,root,root) %{_libdir}/libmarblewidget.so.*.*.*
 
 %attr(755,root,root) %{_libdir}/kde4/libmarble_part.so
@@ -901,7 +923,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/MapScaleFloatItem.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/NavigationFloatItem.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/CrosshairsPlugin.so
-%attr(755,root,root) %{_libdir}/kde4/plugins/marble/GeoRendererPlugin.so
+#%attr(755,root,root) %{_libdir}/kde4/plugins/marble/GeoRendererPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/GpsdPositionProviderPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/GraticulePlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/OverviewMap.so
@@ -911,6 +933,18 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/StarsPlugin.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/Weather.so
 %attr(755,root,root) %{_libdir}/kde4/plugins/marble/Wikipedia.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/GosmorePlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/HostipPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/LatLonPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/LocalDatabasePlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/MonavPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/NominatimPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/OpenRouteServicePlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/PositionMarker.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/RoutingPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/RoutinoPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/YoursPlugin.so
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/org
 
 %dir %{_datadir}/apps/marble_part
 %{_datadir}/apps/marble
