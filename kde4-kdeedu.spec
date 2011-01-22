@@ -624,6 +624,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/48x48/apps/maximabackend.png
 %{_iconsdir}/hicolor/48x48/apps/rbackend.png
 %{_iconsdir}/hicolor/48x48/apps/sagebackend.png
+%{_iconsdir}/hicolor/*x*/apps/octavebackend.png
 %dir %{_datadir}/kde4/services/cantor
 %{_datadir}/kde4/services/cantor/cantor_part.desktop
 %{_datadir}/kde4/services/cantor/creatematrixassistant.desktop
@@ -799,6 +800,23 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kmplot.desktop
 %{_iconsdir}/hicolor/scalable/apps/kmplot.svgz
 %{_iconsdir}/hicolor/*x*/apps/kmplot.png
+%{_iconsdir}/hicolor/*x*/actions/editplots.png
+%{_iconsdir}/hicolor/*x*/actions/functionhelp.png
+%{_iconsdir}/hicolor/*x*/actions/maximum.png
+%{_iconsdir}/hicolor/*x*/actions/minimum.png
+%{_iconsdir}/hicolor/*x*/actions/newdifferential.png
+%{_iconsdir}/hicolor/*x*/actions/newfunction.png
+%{_iconsdir}/hicolor/*x*/actions/newimplicit.png
+%{_iconsdir}/hicolor/*x*/actions/newparametric.png
+%{_iconsdir}/hicolor/*x*/actions/newpolar.png
+%{_iconsdir}/hicolor/*x*/actions/resetview.png
+%{_iconsdir}/hicolor/*x*/actions/coords.png
+%{_iconsdir}/hicolor/*x*/actions/deriv_func.png
+%{_iconsdir}/hicolor/*x*/actions/editconstants.png
+%{_iconsdir}/hicolor/*x*/actions/func.png
+%{_iconsdir}/hicolor/*x*/actions/integral_func.png
+%{_iconsdir}/hicolor/*x*/actions/lessen.png
+%{_iconsdir}/hicolor/*x*/actions/magnify.png
 %{_mandir}/man1/kmplot.1*
 
 %if 0
