@@ -7,7 +7,7 @@ Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
 Version:	4.6.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -902,7 +902,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kalgebravariables.desktop
 %{_datadir}/kde4/servicetypes/kalgebrascript.desktop
 %{_desktopdir}/kde4/kalgebramobile.desktop
-%{_datadir}/apps/kalgebra/scripts
+%{_datadir}/apps/kalgebra
 
 %files marble -f marble.lang
 %defattr(644,root,root,755)
