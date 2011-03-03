@@ -6,17 +6,18 @@
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.6.0
-Release:	3
+Version:	4.6.1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	910301da580fb30c2d7fbb5b22b9a08c
+# Source0-md5:	48503c6bcc58c598ee48b684f662d8fe
 Patch0:		%{name}-findindi.patch
 Patch1:		%{name}-R.patch
 Patch2:		%{name}-categories.patch
 Patch3:		%{name}-libcln.patch
 BuildRequires:	QtScriptTools-devel >= %{qtver}
+BuildRequires:	QtXmlPatterns-devel >= %{qtver}
 BuildRequires:	R
 BuildRequires:	attica-devel >= 0.2.0
 BuildRequires:	automoc4
@@ -29,7 +30,7 @@ BuildRequires:	gpsd-devel
 BuildRequires:	gsl-devel >= 1.8
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
-BuildRequires:	libindi-devel
+BuildRequires:	libindi-devel >= 0.7.0
 BuildRequires:	libnova-devel
 BuildRequires:	libqalculate-devel >= 0.9.5
 BuildRequires:	libspectre-devel
@@ -914,10 +915,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*x*/apps/kalgebra.png
 %{_datadir}/apps/katepart/syntax/kalgebra.xml
 %attr(755,root,root) %{_bindir}/calgebra
-%{_datadir}/kde4/services/kalgebraconsole.desktop
-%{_datadir}/kde4/services/kalgebraplot2d.desktop
-%{_datadir}/kde4/services/kalgebratables.desktop
-%{_datadir}/kde4/services/kalgebravariables.desktop
 %{_datadir}/kde4/servicetypes/kalgebrascript.desktop
 %{_desktopdir}/kde4/kalgebramobile.desktop
 %{_datadir}/apps/kalgebra
