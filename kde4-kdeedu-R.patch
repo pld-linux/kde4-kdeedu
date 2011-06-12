@@ -1,5 +1,5 @@
---- cmake/modules/FindR.cmake~	2010-06-08 12:10:20.000000000 +0200
-+++ cmake/modules/FindR.cmake	2010-07-30 22:26:30.990748100 +0200
+--- cantor/cmake/FindR.cmake~	2010-06-08 12:10:20.000000000 +0200
++++ cantor/cmake/FindR.cmake	2010-07-30 22:26:30.990748100 +0200
 @@ -46,7 +46,7 @@
  
    FIND_LIBRARY(R_R_LIBRARY

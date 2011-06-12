@@ -6,12 +6,12 @@
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.6.3
-Release:	2
+Version:	4.6.4
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	259ba3e733fecd145c4389f10bee5ad1
+# Source0-md5:	ea79251d6f9742ae18ee524c975e703d
 Patch0:		%{name}-findindi.patch
 Patch1:		%{name}-R.patch
 Patch2:		%{name}-categories.patch
@@ -25,6 +25,7 @@ BuildRequires:	avogadro-devel
 BuildRequires:	boost-python-devel
 BuildRequires:	cfitsio-devel
 BuildRequires:	eigen >= 1:2.0.12-3
+BuildRequires:	glew-devel
 BuildRequires:	gmm-devel
 BuildRequires:	gpsd-devel
 BuildRequires:	gsl-devel >= 1.8
@@ -571,6 +572,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libkiten
 %{_includedir}/marble
 %{_includedir}/rocs
+%{_libdir}/cmake/libkdeedu
 %{_datadir}/apps/cmake/modules/*.cmake
 
 %files blinken -f blinken.lang

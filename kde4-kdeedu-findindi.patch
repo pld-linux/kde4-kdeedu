@@ -1,5 +1,5 @@
---- cmake/modules/FindINDI.cmake.orig	2009-03-28 10:22:14.751715576 +0100
-+++ cmake/modules/FindINDI.cmake	2009-03-28 10:27:15.104544199 +0100
+--- kstars/cmake/modules/FindINDI.cmake.orig	2009-03-28 10:22:14.751715576 +0100
++++ kstars/cmake/modules/FindINDI.cmake	2009-03-28 10:27:15.104544199 +0100
 @@ -23,26 +23,31 @@
    find_path(INDI_INCLUDE_DIR indidevapi.h
      PATH_SUFFIXES libindi
