@@ -1,17 +1,17 @@
 
 %define		_state		stable
 %define		orgname		kdeedu
-%define		qtver		4.7.2
+%define		qtver		4.7.3
 
 Summary:	K Desktop Environment - edutainment
 Summary(pl.UTF-8):	K Desktop Environment - edukacja i rozrywka
 Name:		kde4-kdeedu
-Version:	4.6.4
+Version:	4.6.5
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	ea79251d6f9742ae18ee524c975e703d
+# Source0-md5:	44f21523890d8e0fa3d30da2d5c4d082
 Patch0:		%{name}-findindi.patch
 Patch1:		%{name}-R.patch
 Patch2:		%{name}-categories.patch
@@ -505,6 +505,7 @@ fizyka.
 %build
 install -d build
 cd build
+CXXFLAGS="%{rpmcxxflags} -fpermissive" \
 %cmake \
 	-DEXPERIMENTAL_PYTHON_BINDINGS=TRUE \
 	../
